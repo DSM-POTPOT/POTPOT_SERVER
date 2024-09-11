@@ -1,5 +1,5 @@
 plugins {
-    id("org.springframework.boot") version "3.3.2"
+    id("org.springframework.boot") version "3.0.0"
     id("io.spring.dependency-management") version "1.1.6"
     kotlin("jvm") version "1.9.24"
     kotlin("plugin.spring") version "1.9.24"
@@ -22,7 +22,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    
+
     // developmentOnly
     developmentOnly("org.springframework.boot:spring-boot-devtools")
 
@@ -30,7 +30,9 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation:2.7.3")
 
     // jwt
-    implementation("io.jsonwebtoken:jjwt:0.9.0")
+    implementation("io.jsonwebtoken:jjwt-api:0.11.5")
+    implementation("io.jsonwebtoken:jjwt-impl:0.11.5")
+    implementation("io.jsonwebtoken:jjwt-jackson:0.11.5")
 
     // security
     implementation("org.springframework.boot:spring-boot-starter-security")
@@ -44,14 +46,15 @@ dependencies {
     // database
     implementation("mysql:mysql-connector-java:8.0.28")
     implementation("org.springframework.boot:spring-boot-starter-data-redis")
-    runtimeOnly("com.mysql:mysql-connector-j")
-    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 
     // jpa
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
     // S3
     implementation ("org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE")
+
+    //annotation
+    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 }
 
 kotlin {
