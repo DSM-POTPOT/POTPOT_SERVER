@@ -36,7 +36,7 @@ spring:
     multipart:
       max-file-size: 10MB
 jwt:
-  secret_key: test-key
+  secret_key: "kfjkljdjalksfjdlkjdflkjflajdlfkasfjdksjfladkjslkjsdlfjdjaflksdjflsakfjeoiwwdkjnv"
   access_exp: 7200
   refresh_exp: 2630016
   header: Authorization
