@@ -1,12 +1,11 @@
 package com.example.potpot_server.domain.user.domain
 
-import jakarta.persistence.Id
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
+import jakarta.persistence.*
 
 @Entity(name = "tbl_user")
 class User(
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "school_number", length = 5, nullable = false)
     val schoolNumber: String,
 
