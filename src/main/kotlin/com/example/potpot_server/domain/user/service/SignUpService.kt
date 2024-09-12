@@ -21,7 +21,7 @@ class SignUpService(
                 request.schoolNumber,
                 request.name,
                 passwordEncoder.encode(request.password),
-                request.mail,
+                request.email,
                 request.imageUrl
             )
             userRepository.save(newUser)
