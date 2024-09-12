@@ -55,6 +55,14 @@ dependencies {
 
     //annotation
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+
+    // mail
+    implementation ("org.springframework.boot:spring-boot-starter-mail:3.1.2")
+
+    // thymeleaf
+    implementation ("org.springframework.boot:spring-boot-starter-thymeleaf")
+    implementation ("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect")
+    implementation ("org.springframework.boot:spring-boot-starter-web")
 }
 
 kotlin {
