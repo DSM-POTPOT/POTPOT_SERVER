@@ -42,13 +42,13 @@ class TokenProvider(
         return refreshToken
     }
 
-    private fun createToken(role: String, type: String, exp: Long): String {
+    private fun createToken(schoolNumber: String, type: String, exp: Long): String {
         return Jwts.builder()
-            .setHeaderParam("typ", type)
-            .claim("role", role)
+            .setSubject(schoolNumber)
+            .claim("schoolNumber", schoolNumber)
             .signWith(secretKey, SignatureAlgorithm.HS256)
             .setExpiration(Date(System.currentTimeMillis() + exp * 1000))
-            .setIssuedAt(Date())
+            .setIssuedAt(Date(System.currentTimeMillis()))
             .compact()
     }
 
@@ -59,13 +59,15 @@ class TokenProvider(
     }
 
     private fun getSchoolNumber(token: String): String {
-        return getClaims(token).subject
+        val claims = getClaims(token)
+        return claims.subject ?: throw IllegalArgumentException("Subject cannot be null")
     }
 
     private fun getClaims(token: String): Claims {
         return try {
-            Jwts.parser()
-                .setSigningKey(tokenProperties.secretKey)
+            Jwts.parserBuilder()
+                .setSigningKey(secretKey)
+                .build()
                 .parseClaimsJws(token)
                 .body
         } catch (e: ExpiredJwtException) {
@@ -88,12 +90,12 @@ class TokenProvider(
 
     }
 
-    fun validateToken(token: String): Boolean {
-        return try {
-            val claims = Jwts.parser().setSigningKey(tokenProperties.secretKey).parseClaimsJws(token).body
-            true
-        } catch (e: Exception) {
-            false
-        }
-    }
+//    fun validateToken(token: String): Boolean {
+//        return try {
+//            val claims = Jwts.parser().setSigningKey(tokenProperties.secretKey).parseClaimsJws(token).body
+//            true
+//        } catch (e: Exception) {
+//            false
+//        }
+//    }
 }
