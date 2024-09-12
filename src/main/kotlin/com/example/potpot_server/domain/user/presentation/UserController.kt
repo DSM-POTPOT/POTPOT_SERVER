@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController
 class UserController(
     private val signUpService: SignUpService,
     private val signInService: SignInService,
-    private val emailTool: EmailTool
+//    private val emailTool: EmailTool
 ) {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
@@ -34,9 +34,9 @@ class UserController(
         return signInService.execute(request)
     }
 
-    @ResponseStatus(HttpStatus.OK)
-    @PostMapping("/email")
-    fun verifySend(@RequestBody @Valid request: EmailVerifyNumberRequest){
-        emailTool.sendEmail(request)
-    }
+//    @ResponseStatus(HttpStatus.OK)
+//    @PostMapping("/email")
+//    fun verifySend(@RequestBody @Valid request: EmailVerifyNumberRequest){
+//        emailTool.sendEmail(request)
+//    }
 }
