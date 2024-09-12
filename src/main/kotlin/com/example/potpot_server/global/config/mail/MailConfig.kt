@@ -1,4 +1,4 @@
-package com.example.potpot_server.domain.auth.service
+package com.example.potpot_server.global.config.mail
 
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
@@ -28,10 +28,10 @@ class MailConfig(
     @Bean
     fun javaMailSender(): JavaMailSender{
         val javaMailSender = JavaMailSenderImpl().apply {
-            host = "smtp.gmail.com"
-            username = "haspring@dsm.hs.kr"
-            password = "nefhzscunhjqgyga"
-            port = 587
+            host = host
+            username = username
+            password = password
+            port = port
             defaultEncoding = "UTF-8"
             javaMailProperties = getMailProperties()
         }
