@@ -1,9 +1,9 @@
 package com.example.potpot_server.domain.user.presentation
 
-import com.example.potpot_server.domain.auth.presentation.EmailVerifyNumberRequest
+//import com.example.potpot_server.domain.auth.presentation.EmailVerifyNumberRequest
 import com.example.potpot_server.domain.user.presentation.dto.request.SignInRequest
 import com.example.potpot_server.domain.user.presentation.dto.request.SignUpRequest
-import com.example.potpot_server.domain.auth.service.EmailTool
+//import com.example.potpot_server.domain.auth.service.EmailTool
 import com.example.potpot_server.domain.user.presentation.dto.response.TokenResponse
 import com.example.potpot_server.domain.user.service.SignInService
 import com.example.potpot_server.domain.user.service.SignUpService
