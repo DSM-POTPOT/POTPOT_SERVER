@@ -7,7 +7,7 @@ data class SignUpRequest(
 
     val password: String,
 
-    val mail: String,
+    val email: String,
 
     val imageUrl: String
 )
