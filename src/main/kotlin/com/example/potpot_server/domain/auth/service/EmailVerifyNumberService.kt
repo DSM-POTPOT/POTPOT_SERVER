@@ -22,7 +22,7 @@ class EmailVerifyNumberService(
     private val emailTool: EmailTool,
     private val redisTool: RedisTool
 ) {
-    private val AUTH_CODE_PREFIX = "AuthCode "
+    private val AUTH_CODE_PREFIX = "AuthCode"
 
     @Value("\${spring.mail.auth-code-expiration-millis}")
     private val authCodeExpirationMillis: Long = 0
@@ -33,12 +33,9 @@ class EmailVerifyNumberService(
             throw CustomException(HttpStatus.CONFLICT, "중복 된 이메일 입니다.")
         }
 
-        // 인증코드 생성, 저장 및 이메일 전송
-        val title = "유저 이메일 인증 번호"
         val authCode = makeRandomNumber()
-        val text = "POTPOT 이메일 인증번호 입니다. 타인에게 공유하지 마세요. $authCode"
 
-
+        // 인증코드 생성, 저장 및 이메일 전송
         // 이메일 인증 요청 시 인증 번호 Redis에 저장
         redisTool.setValues(
             AUTH_CODE_PREFIX + emailVerifyNumberRequest.email,
