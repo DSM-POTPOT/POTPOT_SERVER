@@ -14,37 +14,43 @@ class MailConfig(
     private val host: String? = null
 
     @Value("\${spring.mail.port}")
-    private val port = 0
+    private val mailPort = 0
 
     @Value("\${spring.mail.username}")
-    private val username: String? = null
+    private val mailUsername: String? = null
 
     @Value("\${spring.mail.password}")
-    private val password: String? = null
-
-    @Value("\${spring.mail.properties.mail.smtp.auth}")
-    private val auth = false
+    private val mailPassword: String? = null
 
     @Bean
     fun javaMailSender(): JavaMailSender{
         val javaMailSender = JavaMailSenderImpl().apply {
             host = host
-            username = username
-            password = password
-            port = port
+            username = mailUsername
+            password = mailPassword
+            port = mailPort
             defaultEncoding = "UTF-8"
             javaMailProperties = getMailProperties()
         }
         return javaMailSender
     }
-
-    @Bean
-    fun getMailProperties(): Properties {
+    private fun getMailProperties(): Properties {
         return Properties().apply {
-            setProperty("mail.smtp.auth", "true")
-            setProperty("mail.smtp.host", host)
-            setProperty("mail.smtp.port", port.toString())
-            setProperty("mail.smtp.starttls.enable", "true")
+            this["mail.smtp.host"] = host
+            this["mail.smtp.port"] = mailPort
+            this["mail.transport.protocol"] = "smtp"
+            this["mail.smtp.auth"] = "true"
+            this["mail.smtp.starttls.enable"] = "true"
+            this["mail.debug"] = "true"
         }
     }
+
+//    fun getMailProperties(): Properties {
+//        return Properties().apply {
+//            setProperty("mail.smtp.auth", "true")
+//            setProperty("mail.smtp.host", host)
+//            setProperty("mail.smtp.port", mailPort.toString())
+//            setProperty("mail.smtp.starttls.enable", "true")
+//        }
+//    }
 }

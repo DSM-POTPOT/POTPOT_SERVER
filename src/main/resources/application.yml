@@ -70,11 +70,7 @@ logging:
     properties:
       mail:
         smtp:
-          auth: ${SPRING_MAIL_PROPERTIES_MAIL_SMTP_AUTH}
+          auth: true
           starttls:
-            mail.smtp.starttls.enable: true
-            required: true
-          connectiontimeout: 5000
-          timeout: 5000
-          writetimeout: 5000
+            enable: true
     auth-code-expiration-millis: ${SPRING_MAIL_AUTH_CODE_EXPIRATION_MILLIS}

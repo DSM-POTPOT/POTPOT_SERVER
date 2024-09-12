@@ -1,6 +1,5 @@
 package com.example.potpot_server.domain.auth.service
 
-import org.slf4j.LoggerFactory
 import org.springframework.data.redis.core.RedisTemplate
 import org.springframework.data.redis.core.ValueOperations
 import org.springframework.stereotype.Component
@@ -10,8 +9,6 @@ import java.time.Duration
 @Component
 @Transactional
 class RedisTool(private val redisTemplate: RedisTemplate<String, Any>) {
-
-    private val log = LoggerFactory.getLogger(RedisTool::class.java)
 
     fun setValues(key: String, data: String) {
         val values: ValueOperations<String, Any> = redisTemplate.opsForValue()
