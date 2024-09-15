@@ -12,11 +12,15 @@ enum class ErrorCode(
     TOKEN_INVALID(401, "Token Invalid"),
     TOKEN_EXPIRED(401, "Token Expired"),
 
+    UNMATCHED_VERIFY_CODE(403, "Unmatched Verify Code"),
+    UNEXIST_VERIFY_CODE(403, "Unexist Verify Code"),
+
     USER_NOT_FOUND(404, "User Not Found"),
     FEED_NOT_FOUND(404, "Feed Not Found"),
 
     ALREADY_ACCOUNT_ID(409, "Already Account Id"),
     ALREADY_EXIST_LIKE(409, "Already Exist Like"),
+    ALREADY_EXIST_EMAIL(409, "Already Exist Email"),
 
     INTERNAL_SERVER_ERROR(500, "Internal Server Error");
 }
