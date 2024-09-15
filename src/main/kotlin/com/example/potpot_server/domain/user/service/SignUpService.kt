@@ -18,6 +18,7 @@ class SignUpService(
     fun execute(request:SignUpRequest){
         if(!checkSchoolNumber(request.schoolNumber)){
             val newUser = User(
+                id = 0,
                 request.schoolNumber,
                 request.name,
                 passwordEncoder.encode(request.password),
