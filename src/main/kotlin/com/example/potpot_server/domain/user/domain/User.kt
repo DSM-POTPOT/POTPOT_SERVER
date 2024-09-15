@@ -6,6 +6,9 @@ import jakarta.persistence.*
 class User(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id", length = 5, nullable = false)
+    val id: Int,
+
     @Column(name = "school_number", length = 5, nullable = false)
     val schoolNumber: String,
 
@@ -16,11 +19,12 @@ class User(
     val password: String,
 
     @Column(length = 55, nullable = false)
-    val mail: String,
+    val email: String,
 
     @Column(name = "image_url")
     val imageUrl: String
 ){
-    constructor() : this( "","", "", "", "")
 
+    protected constructor() : this(0,"","","","","")
+    constructor(id: Int) : this( id,"","", "", "", "")
 }
