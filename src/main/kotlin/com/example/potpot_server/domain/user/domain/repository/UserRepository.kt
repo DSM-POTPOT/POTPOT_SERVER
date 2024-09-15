@@ -8,6 +8,4 @@ import org.springframework.stereotype.Repository
 interface UserRepository : JpaRepository<User, String>{
     fun findBySchoolNumber(schoolNumber: String): User?
     fun existsBySchoolNumber(schoolNumber: String): Boolean
-
-    fun existsByMail(mail: String): Boolean
 }
