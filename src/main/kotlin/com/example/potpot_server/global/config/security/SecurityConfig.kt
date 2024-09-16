@@ -36,6 +36,7 @@ class SecurityConfig(
                     .requestMatchers(HttpMethod.POST, "/users/signin").permitAll()
                     .requestMatchers(HttpMethod.POST, "/users/email").permitAll()
                     .requestMatchers(HttpMethod.GET, "/users/email").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/users/user").permitAll()
             }
         http
             .apply(FilterConfig(objectMapper, tokenProvider))

@@ -7,8 +7,10 @@ import com.example.potpot_server.domain.auth.service.EmailVerifyNumberService
 import com.example.potpot_server.domain.user.presentation.dto.request.SignInRequest
 import com.example.potpot_server.domain.user.presentation.dto.request.SignUpRequest
 import com.example.potpot_server.domain.user.presentation.dto.response.TokenResponse
+import com.example.potpot_server.domain.user.presentation.dto.response.UserInfoResponse
 import com.example.potpot_server.domain.user.service.SignInService
 import com.example.potpot_server.domain.user.service.SignUpService
+import com.example.potpot_server.domain.user.service.UserInfoService
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.GetMapping
@@ -25,7 +27,8 @@ class UserController(
     private val signUpService: SignUpService,
     private val signInService: SignInService,
     private val emailVerifyNumberService: EmailVerifyNumberService,
-    private val emailVerifyNumberMatchService: EmailVerifyNumberMatchService
+    private val emailVerifyNumberMatchService: EmailVerifyNumberMatchService,
+    private val userInfoService: UserInfoService
 ) {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
@@ -51,5 +54,11 @@ class UserController(
     @GetMapping("/email")
     fun verifyMatch(request: EmailVerifyNumberMatchRequest){
         emailVerifyNumberMatchService.verifiedCode(request)
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/user")
+    fun getUserInfo(): UserInfoResponse{
+        return userInfoService.execute()
     }
 }
