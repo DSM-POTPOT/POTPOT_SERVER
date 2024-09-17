@@ -8,6 +8,7 @@ enum class ErrorCode(
     INCORRECT_PASSWORD(400, "Incorrect Password"),
     INCORRECT_USER(400, "Incorrect User"),
     NOT_ALLOW_SELF_APPLICATION(400, "Not Allow Self Application"),
+    BAD_FILE_EXTENSION(400,"Bad File Extension"),
 
     TOKEN_INVALID(401, "Token Invalid"),
     TOKEN_EXPIRED(401, "Token Expired"),
