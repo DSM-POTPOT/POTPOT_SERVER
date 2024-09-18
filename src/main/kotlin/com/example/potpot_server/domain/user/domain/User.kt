@@ -21,10 +21,17 @@ class User(
     @Column(length = 55, nullable = false)
     val email: String,
 
-    @Column(name = "image_url")
+    @Column(name = "image_url", nullable = false)
     val imageUrl: String
-){
+) {
 
-    protected constructor() : this(0,"","","","","")
-    constructor(id: Int) : this( id,"","", "", "", "")
+    protected constructor() : this(0, "", "", "", "", "")
+    constructor(id: Int, schoolNumber: String, name: String, password: String, email: String) : this(
+        id,
+        "",
+        "",
+        "",
+        "",
+        ""
+    )
 }

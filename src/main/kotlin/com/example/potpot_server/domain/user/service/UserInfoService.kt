@@ -11,6 +11,6 @@ class UserInfoService(
 ) {
     fun execute(): UserInfoResponse{
         val user = userFacade.getCurrentUser()
-        return UserInfoResponse(user.schoolNumber, user.name, user.email)
+        return UserInfoResponse(user.schoolNumber, user.name, user.email, user.imageUrl)
     }
 }

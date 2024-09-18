@@ -6,8 +6,10 @@ import com.example.potpot_server.domain.auth.service.EmailVerifyNumberMatchServi
 import com.example.potpot_server.domain.auth.service.EmailVerifyNumberService
 import com.example.potpot_server.domain.user.presentation.dto.request.SignInRequest
 import com.example.potpot_server.domain.user.presentation.dto.request.SignUpRequest
+import com.example.potpot_server.domain.user.presentation.dto.response.ProfileImageUploadResponse
 import com.example.potpot_server.domain.user.presentation.dto.response.TokenResponse
 import com.example.potpot_server.domain.user.presentation.dto.response.UserInfoResponse
+import com.example.potpot_server.domain.user.service.ProfileImageUploadService
 import com.example.potpot_server.domain.user.service.SignInService
 import com.example.potpot_server.domain.user.service.SignUpService
 import com.example.potpot_server.domain.user.service.UserInfoService
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.multipart.MultipartFile
 
 @RequestMapping("/users")
 @RestController
@@ -28,7 +31,8 @@ class UserController(
     private val signInService: SignInService,
     private val emailVerifyNumberService: EmailVerifyNumberService,
     private val emailVerifyNumberMatchService: EmailVerifyNumberMatchService,
-    private val userInfoService: UserInfoService
+    private val userInfoService: UserInfoService,
+    private val profileImageUploadService: ProfileImageUploadService
 ) {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
@@ -61,4 +65,11 @@ class UserController(
     fun getUserInfo(): UserInfoResponse{
         return userInfoService.execute()
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PostMapping("/file")
+    fun imageUpload(@RequestParam("file") multipartFile: MultipartFile): ProfileImageUploadResponse{
+        return profileImageUploadService.execute(multipartFile)
+    }
+
 }

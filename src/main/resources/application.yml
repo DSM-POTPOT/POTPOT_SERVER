@@ -42,18 +42,18 @@ jwt:
   header: ${HEADER}
   prefix: ${PREFIX}
 
-#cloud:
-#  aws:
-#    s3:
-#      bucket: ${AWS_S3_BUCKET}
-#    credentials:
-#      access-key: ${AWS_S3_ACCESS}
-#      secret-key: ${AWS_S3_SECRET}
-#    region:
-#      static: ap-northeast-2
-#      auto: false
-#    stack:
-#      auto: false
+cloud:
+  aws:
+    s3:
+      bucket: ${AWS_S3_BUCKET}
+    credentials:
+      access-key: ${AWS_S3_ACCESS}
+      secret-key: ${AWS_S3_SECRET}
+    region:
+      static: ap-northeast-2
+      auto: false
+    stack:
+      auto: false
 
 logging:
   level:
