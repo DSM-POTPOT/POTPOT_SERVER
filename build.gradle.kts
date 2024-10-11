@@ -1,6 +1,7 @@
 plugins {
     id("org.springframework.boot") version "3.0.0"
     id("io.spring.dependency-management") version "1.1.6"
+    id("org.jlleitschuh.gradle.ktlint") version "11.5.1"
     kotlin("jvm") version "1.9.24"
     kotlin("plugin.spring") version "1.9.24"
 }
@@ -51,18 +52,18 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
     // S3
-    implementation ("org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE")
+    implementation("org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE")
 
-    //annotation
+    // annotation
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 
     // mail
-    implementation ("org.springframework.boot:spring-boot-starter-mail:3.1.2")
+    implementation("org.springframework.boot:spring-boot-starter-mail:3.1.2")
 
     // thymeleaf
-    implementation ("org.springframework.boot:spring-boot-starter-thymeleaf")
-    implementation ("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect")
-    implementation ("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
+    implementation("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect")
+    implementation("org.springframework.boot:spring-boot-starter-web")
 }
 
 kotlin {
