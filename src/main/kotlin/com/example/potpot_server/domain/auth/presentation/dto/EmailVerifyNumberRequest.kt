@@ -6,5 +6,5 @@ import jakarta.validation.constraints.NotNull
 data class EmailVerifyNumberRequest(
     @JsonProperty("email")
     @NotNull
-    val email: String,
+    val email: String
 )

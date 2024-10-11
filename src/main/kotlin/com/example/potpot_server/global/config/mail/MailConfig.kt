@@ -8,8 +8,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl
 import java.util.*
 
 @Configuration
-class MailConfig(
-) {
+class MailConfig() {
     @Value("\${spring.mail.host}")
     private val host: String? = null
 
@@ -23,7 +22,7 @@ class MailConfig(
     private val mailPassword: String? = null
 
     @Bean
-    fun javaMailSender(): JavaMailSender{
+    fun javaMailSender(): JavaMailSender {
         val javaMailSender = JavaMailSenderImpl().apply {
             host = host
             username = mailUsername

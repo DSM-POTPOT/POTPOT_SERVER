@@ -1,6 +1,10 @@
 package com.example.potpot_server.domain.user.domain
 
-import jakarta.persistence.*
+import jakarta.persistence.Column
+import jakarta.persistence.Entity
+import jakarta.persistence.GeneratedValue
+import jakarta.persistence.GenerationType
+import jakarta.persistence.Id
 
 @Entity(name = "tbl_user")
 class User(
@@ -25,7 +29,7 @@ class User(
     val imageUrl: String
 ) {
 
-    protected constructor() : this(0, "", "", "", "", "")
+    public constructor() : this(0, "", "", "", "", "")
     constructor(id: Int, schoolNumber: String, name: String, password: String, email: String) : this(
         id,
         "",

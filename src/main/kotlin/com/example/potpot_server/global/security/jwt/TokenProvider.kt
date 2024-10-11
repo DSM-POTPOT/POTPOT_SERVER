@@ -23,7 +23,7 @@ import javax.crypto.SecretKey
 class TokenProvider(
     private val tokenProperties: TokenProperties,
     private val authDetailsService: AuthDetailsService,
-    private val refreshTokenRepository: RefreshTokenRepository,
+    private val refreshTokenRepository: RefreshTokenRepository
 ) {
     val secretKey: SecretKey = Keys.hmacShaKeyFor(tokenProperties.secretKey.toByteArray())
     fun generateToken(schoolNumber: String): TokenResponse {
@@ -79,15 +79,15 @@ class TokenProvider(
     }
 
     fun resolveToken(request: HttpServletRequest): String? {
-
         val bearerToken = request.getHeader(tokenProperties.header)
 
-        return if (StringUtils.hasText(bearerToken) && bearerToken.startsWith(tokenProperties.prefix)
-            && bearerToken.length > tokenProperties.prefix.length + 1
+        return if (StringUtils.hasText(bearerToken) && bearerToken.startsWith(tokenProperties.prefix) &&
+            bearerToken.length > tokenProperties.prefix.length + 1
         ) {
             bearerToken.substring(tokenProperties.prefix.length)
-        } else null
-
+        } else {
+            null
+        }
     }
 
 //    fun validateToken(token: String): Boolean {

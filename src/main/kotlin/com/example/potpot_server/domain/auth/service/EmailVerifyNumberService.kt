@@ -42,7 +42,7 @@ class EmailVerifyNumberService(
         return SimpleMailMessage().apply {
             setTo(request.email)
             setSubject("유저 이메일 인증 번호")
-            setText("POTPOT 이메일 인증번호 입니다 : ${random} 타인에게 공유하지 마세요")
+            setText("POTPOT 이메일 인증번호 입니다 : $random 타인에게 공유하지 마세요")
         }
     }
 
@@ -65,7 +65,8 @@ class EmailVerifyNumberService(
         // 인증코드 생성, 저장 및 이메일 전송
         // 이메일 인증 요청 시 인증 번호 Redis에 저장
         redisTool.setValues(
-            emailVerifyNumberRequest.email, random,
+            emailVerifyNumberRequest.email,
+            random,
             Duration.ofMillis(authCodeExpirationMillis)
         )
         sendEmail(emailVerifyNumberRequest)

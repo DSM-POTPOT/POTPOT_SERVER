@@ -9,5 +9,4 @@ class PotpotServerApplicationTests {
     @Test
     fun contextLoads() {
     }
-
 }

@@ -14,9 +14,9 @@ class EmailVerifyNumberMatchService(
 ) {
 
 //    // 인증번호 매치
-    fun verifiedCode(request: EmailVerifyNumberMatchRequest){
+    fun verifiedCode(request: EmailVerifyNumberMatchRequest) {
         val redisAuthCode = redisTool.getValues(request) ?: throw UmExistVerifyCodeException
-        if(redisAuthCode != request.verifyNumber){
+        if (redisAuthCode != request.verifyNumber) {
             throw UnMatchVerifyCodeException
         }
         println("Verification successful for email: ${request.email}")

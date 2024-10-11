@@ -4,5 +4,4 @@ data class EmailVerifyNumberMatchRequest(
     val email: String,
 
     val verifyNumber: String
-) {
-}
+)

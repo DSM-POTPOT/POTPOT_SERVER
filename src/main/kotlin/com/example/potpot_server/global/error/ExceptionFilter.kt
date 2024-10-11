@@ -28,13 +28,12 @@ class ExceptionFilter(
         }
     }
 
-
     @Throws(IOException::class)
     private fun writeErrorResponse(
         response: HttpServletResponse,
         status: Int,
         errorResponse:
-        ErrorResponse
+            ErrorResponse
     ) {
         response.status = status
         response.contentType = "application/json"

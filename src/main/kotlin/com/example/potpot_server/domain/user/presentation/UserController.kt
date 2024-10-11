@@ -36,40 +36,45 @@ class UserController(
 ) {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
-    fun signup(@RequestBody @Valid request: SignUpRequest) {
+    fun signup(
+        @RequestBody @Valid
+        request: SignUpRequest
+    ) {
         signUpService.execute(request)
     }
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/signin")
-    fun signIn(@RequestBody @Valid request: SignInRequest): TokenResponse {
+    fun signIn(
+        @RequestBody @Valid
+        request: SignInRequest
+    ): TokenResponse {
         return signInService.execute(request)
     }
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/email")
     fun verifySend(
-        @RequestParam("email") request: EmailVerifyNumberRequest,
+        @RequestParam("email") request: EmailVerifyNumberRequest
     ) {
         emailVerifyNumberService.sendCodeToEmail(request)
     }
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/email")
-    fun verifyMatch(request: EmailVerifyNumberMatchRequest){
+    fun verifyMatch(request: EmailVerifyNumberMatchRequest) {
         emailVerifyNumberMatchService.verifiedCode(request)
     }
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/user")
-    fun getUserInfo(): UserInfoResponse{
+    fun getUserInfo(): UserInfoResponse {
         return userInfoService.execute()
     }
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/file")
-    fun imageUpload(@RequestParam("file") multipartFile: MultipartFile): ProfileImageUploadResponse{
+    fun imageUpload(@RequestParam("file") multipartFile: MultipartFile): ProfileImageUploadResponse {
         return profileImageUploadService.execute(multipartFile)
     }
-
 }

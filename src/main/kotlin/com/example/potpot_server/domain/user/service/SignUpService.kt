@@ -15,8 +15,8 @@ class SignUpService(
     private val passwordEncoder: PasswordEncoder
 ) {
     @Transactional
-    fun execute(request:SignUpRequest){
-        if(!checkSchoolNumber(request.schoolNumber)){
+    fun execute(request: SignUpRequest) {
+        if (!checkSchoolNumber(request.schoolNumber)) {
             val newUser = User(
                 id = 0,
                 request.schoolNumber,
@@ -26,12 +26,12 @@ class SignUpService(
                 request.imageUrl
             )
             userRepository.save(newUser)
-        } else{
+        } else {
             throw ResponseStatusException(HttpStatus.CONFLICT, "이미 존재하는 ${request.schoolNumber} 학번 입니다.")
         }
     }
 
-    fun checkSchoolNumber(schoolNumber: String): Boolean{
+    fun checkSchoolNumber(schoolNumber: String): Boolean {
         return userRepository.existsBySchoolNumber(schoolNumber)
     }
 }

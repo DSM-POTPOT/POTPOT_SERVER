@@ -1,7 +1,7 @@
 package com.example.potpot_server.global.error.exception
 
 abstract class POTPOTException(
-    val errorCode: ErrorCode,
+    val errorCode: ErrorCode
 ) : RuntimeException() {
     val status: Int
         get() = errorCode.status

@@ -5,7 +5,6 @@ import com.example.potpot_server.global.utils.S3Utils
 import org.springframework.stereotype.Service
 import org.springframework.web.multipart.MultipartFile
 
-
 @Service
 class ProfileImageUploadService(
     private val s3Utils: S3Utils

@@ -1,7 +1,6 @@
 package com.example.potpot_server.global.redis
 
 import com.example.potpot_server.domain.auth.presentation.dto.EmailVerifyNumberMatchRequest
-import com.example.potpot_server.domain.auth.presentation.dto.EmailVerifyNumberRequest
 import org.springframework.data.redis.core.RedisTemplate
 import org.springframework.data.redis.core.ValueOperations
 import org.springframework.stereotype.Component
