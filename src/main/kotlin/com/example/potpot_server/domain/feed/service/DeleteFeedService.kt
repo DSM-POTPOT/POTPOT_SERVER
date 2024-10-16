@@ -16,7 +16,7 @@ class DeleteFeedService(
     @Transactional
     fun execute(id: Long) {
         val user = userFacade.getCurrentUser()
-        val feed = feedRepository.findById(id).get() ?: throw FeedNotFoundException
+        val feed = feedRepository.findById(id).orElseThrow() ?: throw FeedNotFoundException
 
         if (user != feed.user) throw UserMismatchException
 
