@@ -2,7 +2,7 @@ package com.example.potpot_server.domain.feed.service
 
 import com.example.potpot_server.domain.feed.domain.Feed
 import com.example.potpot_server.domain.feed.domain.FeedRepository
-import com.example.potpot_server.domain.feed.presentation.dto.request.CreateRequest
+import com.example.potpot_server.domain.feed.presentation.dto.request.FeedRequest
 import com.example.potpot_server.domain.user.facade.UserFacade
 import com.example.potpot_server.global.utils.S3Utils
 import org.springframework.stereotype.Service
@@ -17,7 +17,7 @@ class CreateFeedService(
 ) {
 
     @Transactional
-    fun execute(image: MultipartFile?, request: CreateRequest) {
+    fun execute(image: MultipartFile?, request: FeedRequest) {
         val user = userFacade.getCurrentUser()
 
         val image = image?.let { s3Utils.saveFile(it) }
