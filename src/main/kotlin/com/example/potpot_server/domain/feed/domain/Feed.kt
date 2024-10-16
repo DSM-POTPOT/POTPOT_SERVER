@@ -15,7 +15,7 @@ import jakarta.persistence.ManyToOne
 import java.time.LocalDate
 
 @Entity(name = "tbl_feed")
-class Feed(
+data class Feed(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     val id: Long = 0,
@@ -34,6 +34,9 @@ class Feed(
     val category: Category = Category.ETC,
 
     val image: String? = null,
+
+    @Column(name = "is_ok", nullable = false)
+    val isOK: Boolean = true,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
