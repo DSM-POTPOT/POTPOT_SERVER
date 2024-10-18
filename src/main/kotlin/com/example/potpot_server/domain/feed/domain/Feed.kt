@@ -21,17 +21,17 @@ data class Feed(
     val id: Long = 0,
 
     @Column(nullable = false)
-    val title: String = "",
+    var title: String = "",
 
     @Column(nullable = false)
-    val content: String = "",
+    var content: String = "",
 
     @Column(nullable = false)
-    val date: LocalDate = LocalDate.now(),
+    var date: LocalDate = LocalDate.now(),
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    val category: Category = Category.ETC,
+    var category: Category = Category.ETC,
 
     val image: String? = null,
 
@@ -51,4 +51,11 @@ data class Feed(
         image = null,
         user = User()
     )
+
+    fun modifyFeed(title: String, content: String, date: LocalDate, category: Category) {
+        this.title = title
+        this.content = content
+        this.date = date
+        this.category = category
+    }
 }
