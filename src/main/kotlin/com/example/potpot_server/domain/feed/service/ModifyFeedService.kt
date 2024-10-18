@@ -17,17 +17,9 @@ class ModifyFeedService(
     @Transactional
     fun execute(id: Long, request: FeedRequest) {
         val user = userFacade.getCurrentUser()
-        val feed = feedRepository.findById(id).orElseThrow() ?: throw FeedNotFoundException
+        val feed = feedRepository.findById(id).get() ?: throw FeedNotFoundException
 
-        if (user != feed.user) throw UserMismatchException
-
-        feedRepository.save(
-            feed.copy(
-                title = request.title,
-                content = request.content,
-                date = request.date,
-                category = request.category
-            )
-        )
+        if (user.id != feed.user.id) throw UserMismatchException
+        feed.modifyFeed(request.title, request.content, request.date, request.category)
     }
 }
