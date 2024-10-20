@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.multipart.MultipartFile
 
-@RequestMapping("/users")
+@RequestMapping("/user")
 @RestController
 class UserController(
     private val signUpService: SignUpService,
@@ -67,7 +67,7 @@ class UserController(
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/user")
+    @GetMapping("/users")
     fun getUserInfo(): UserInfoResponse {
         return userInfoService.execute()
     }
