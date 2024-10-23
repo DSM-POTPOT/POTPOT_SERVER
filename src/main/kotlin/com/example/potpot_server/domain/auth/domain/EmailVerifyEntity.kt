@@ -9,5 +9,4 @@ class EmailVerifyEntity(
     val email: String,
 
     val verifyNumber: String
-) {
-}
+)

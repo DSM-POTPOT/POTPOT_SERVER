@@ -20,10 +20,10 @@ data class Feed(
     @Id
     val id: Long = 0,
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 50)
     var title: String = "",
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 500)
     var content: String = "",
 
     @Column(nullable = false)

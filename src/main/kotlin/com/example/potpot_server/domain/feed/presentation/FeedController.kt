@@ -33,7 +33,7 @@ class FeedController(
         @RequestPart(name = "request") @Valid request: FeedRequest
     ) = createFeedService.execute(file, request)
 
-    @ResponseStatus
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping
     fun delete(@RequestParam(name = "id") id: Long) =
         deleteFeedService.execute(id)
@@ -42,6 +42,7 @@ class FeedController(
     fun update(
         @RequestParam(name = "id")
         id: Long,
+        @Valid
         @RequestBody
         request: FeedRequest
     ) = modifyFeedService.execute(id, request)
