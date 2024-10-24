@@ -31,12 +31,12 @@ class SecurityConfig(
             .authorizeHttpRequests { authorize ->
                 authorize
                     // user
-                    .requestMatchers(HttpMethod.POST, "/users/signup").permitAll()
-                    .requestMatchers(HttpMethod.POST, "/users/signin").permitAll()
-                    .requestMatchers(HttpMethod.POST, "/users/email").permitAll()
-                    .requestMatchers(HttpMethod.GET, "/users/email").permitAll()
-                    .requestMatchers(HttpMethod.GET, "/users/user").permitAll()
-                    .requestMatchers(HttpMethod.POST, "/users/file").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/user/signup").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/user/signin").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/user/email").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/user/email").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/user/user").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/user/file").permitAll()
             }
         http
             .apply(FilterConfig(objectMapper, tokenProvider))
