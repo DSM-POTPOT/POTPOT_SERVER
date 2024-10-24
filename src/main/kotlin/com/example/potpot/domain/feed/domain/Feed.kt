@@ -13,6 +13,7 @@ import jakarta.persistence.Id
 import jakarta.persistence.JoinColumn
 import jakarta.persistence.ManyToOne
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 @Entity(name = "tbl_feed")
 data class Feed(
@@ -58,4 +59,6 @@ data class Feed(
         this.date = date
         this.category = category
     }
+
+    fun format(date: LocalDate) = date.format(DateTimeFormatter.ofPattern("yy.MM.dd"))!!
 }
