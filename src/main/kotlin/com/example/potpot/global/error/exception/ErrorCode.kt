@@ -19,10 +19,12 @@ enum class ErrorCode(
 
     USER_NOT_FOUND(404, "User Not Found"),
     FEED_NOT_FOUND(404, "Feed Not Found"),
+    APPLY_NOT_FOUND(404, "Application Not Found"),
 
     ALREADY_ACCOUNT_ID(409, "Already Account Id"),
     ALREADY_EXIST_LIKE(409, "Already Exist Like"),
     ALREADY_EXIST_EMAIL(409, "Already Exist Email"),
+    ALREADY_APPLY(409, "Already Apply"),
 
     INTERNAL_SERVER_ERROR(500, "Internal Server Error");
 }
