@@ -24,6 +24,7 @@ enum class ErrorCode(
     ALREADY_ACCOUNT_ID(409, "Already Account Id"),
     ALREADY_EXIST_LIKE(409, "Already Exist Like"),
     ALREADY_EXIST_EMAIL(409, "Already Exist Email"),
+    ALREADY_APPLY(409, "Already Apply"),
 
     INTERNAL_SERVER_ERROR(500, "Internal Server Error");
 }

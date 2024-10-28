@@ -2,6 +2,7 @@ package com.example.potpot.domain.apply.sevice
 
 import com.example.potpot.domain.apply.domain.Apply
 import com.example.potpot.domain.apply.domain.ApplyRepository
+import com.example.potpot.domain.apply.exception.AlreadyApplyException
 import com.example.potpot.domain.apply.presentation.dto.request.ApplyRequest
 import com.example.potpot.domain.feed.domain.FeedRepository
 import com.example.potpot.domain.user.facade.UserFacade
@@ -18,6 +19,8 @@ class ApplyService(
     fun execute(request: ApplyRequest) {
         val user = userFacade.getCurrentUser()
         val feed = feedRepository.findById(request.feedId).get()
+
+        if (applyRepository.existsByUserAndFeed(user, feed)) throw AlreadyApplyException
 
         applyRepository.save(
             Apply(
