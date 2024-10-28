@@ -15,7 +15,6 @@ import jakarta.servlet.http.HttpServletRequest
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.stereotype.Component
-import org.springframework.util.StringUtils
 import java.util.*
 import javax.crypto.SecretKey
 
@@ -53,7 +52,6 @@ class TokenProvider(
     }
 
     fun getAuthentication(token: String): UsernamePasswordAuthenticationToken {
-        println(getSchoolNumber(token))
         val userDetails: UserDetails = authDetailsService.loadUserByUsername(getSchoolNumber(token))
         return UsernamePasswordAuthenticationToken(userDetails, "", userDetails.authorities)
     }
@@ -79,12 +77,13 @@ class TokenProvider(
     }
 
     fun resolveToken(request: HttpServletRequest): String? {
-        val bearerToken = request.getHeader(tokenProperties.header)
+        val bearerToken = request.getHeader("Authorization")
+        return parseToken(bearerToken)
+    }
 
-        return if (StringUtils.hasText(bearerToken) && bearerToken.startsWith(tokenProperties.prefix) &&
-            bearerToken.length > tokenProperties.prefix.length + 1
-        ) {
-            bearerToken.substring(tokenProperties.prefix.length)
+    private fun parseToken(bearerToken: String?): String? {
+        return if (!bearerToken.isNullOrEmpty() && bearerToken.startsWith("Bearer ")) {
+            bearerToken.removePrefix("Bearer ")
         } else {
             null
         }
