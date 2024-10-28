@@ -1,4 +1,4 @@
-package com.example.potpot.domain.apply.sevice
+package com.example.potpot.domain.apply.service
 
 import com.example.potpot.domain.apply.domain.ApplyRepository
 import com.example.potpot.domain.apply.exception.ApplyNotFoundException

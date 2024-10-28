@@ -2,11 +2,11 @@ package com.example.potpot.domain.apply.presentation
 
 import com.example.potpot.domain.apply.presentation.dto.request.ApplyRequest
 import com.example.potpot.domain.apply.presentation.dto.request.ChangeStatusRequest
-import com.example.potpot.domain.apply.sevice.ApplyService
-import com.example.potpot.domain.apply.sevice.ChangeIsOKService
-import com.example.potpot.domain.apply.sevice.DeleteApplyService
-import com.example.potpot.domain.apply.sevice.QueryFeedApplyService
-import com.example.potpot.domain.apply.sevice.QueryMyApplyService
+import com.example.potpot.domain.apply.service.ApplyService
+import com.example.potpot.domain.apply.service.ChangeIsOKService
+import com.example.potpot.domain.apply.service.DeleteApplyService
+import com.example.potpot.domain.apply.service.QueryFeedApplyService
+import com.example.potpot.domain.apply.service.QueryMyApplyService
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
