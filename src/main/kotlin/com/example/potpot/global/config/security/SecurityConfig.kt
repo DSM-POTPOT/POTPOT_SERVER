@@ -37,6 +37,13 @@ class SecurityConfig(
                     .requestMatchers(HttpMethod.GET, "/user/email").permitAll()
                     .requestMatchers(HttpMethod.GET, "/user/user").permitAll()
                     .requestMatchers(HttpMethod.POST, "/user/file").permitAll()
+
+                    // feed
+                    .requestMatchers(HttpMethod.POST, "/feed").permitAll()
+                    .requestMatchers(HttpMethod.DELETE, "/feed").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/comment/{feed-id}").permitAll()
+                    .requestMatchers(HttpMethod.DELETE, "/comment/{comment-id}").permitAll()
+                    .requestMatchers(HttpMethod.PATCH, "/comment/{comment-id}").permitAll()
             }
         http
             .apply(FilterConfig(objectMapper, tokenProvider))
