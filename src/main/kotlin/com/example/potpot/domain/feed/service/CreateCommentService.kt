@@ -23,7 +23,7 @@ class CreateCommentService(
         commentRepository.save(
             Comment(
                 id,
-                content = request.content,
+                comment = request.comment,
                 user = user,
                 feed = feed
             )
