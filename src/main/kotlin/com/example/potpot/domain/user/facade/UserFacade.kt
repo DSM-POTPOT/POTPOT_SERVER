@@ -11,7 +11,7 @@ class UserFacade(
     private val userRepository: UserRepository
 ) {
     fun getCurrentUser(): User {
-        val schoolNumber: String = SecurityContextHolder.getContext().authentication.name
+        val schoolNumber = SecurityContextHolder.getContext().authentication.name
         return getBySchoolNumber(schoolNumber)
     }
 
