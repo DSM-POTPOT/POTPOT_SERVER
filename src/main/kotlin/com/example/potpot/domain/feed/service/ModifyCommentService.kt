@@ -22,6 +22,6 @@ class ModifyCommentService(
 
         if(!user.equals(comment.user)) throw UserMismatchException
 
-        comment.modifyComment(request.content)
+        comment.modifyComment(request.comment)
     }
 }

@@ -11,7 +11,7 @@ data class Comment(
     val id: Long = 0,
 
     @Column(nullable = false, length = 100)
-    var content: String = "",
+    var comment: String = "",
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
@@ -23,12 +23,12 @@ data class Comment(
 ) {
     constructor(): this(
         id = 0,
-        content = "",
+        comment = "",
         user = User(),
         feed = Feed()
     )
 
-    fun modifyComment(content: String){
-        this.content = content
+    fun modifyComment(comment: String){
+        this.comment = comment
     }
 }
