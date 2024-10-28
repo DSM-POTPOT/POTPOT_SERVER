@@ -2,6 +2,7 @@ package com.example.potpot.domain.feed.domain
 
 import com.example.potpot.domain.feed.enum.Category
 import com.example.potpot.domain.user.domain.User
+import jakarta.persistence.CascadeType
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.EnumType
@@ -12,6 +13,7 @@ import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import jakarta.persistence.JoinColumn
 import jakarta.persistence.ManyToOne
+import jakarta.persistence.OneToMany
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -41,7 +43,10 @@ data class Feed(
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    val user: User = User()
+    val user: User = User(),
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "feed", cascade = [CascadeType.ALL])
+    val comments: List<Comment> = emptyList()
 ) {
     constructor() : this(
         id = 0,
