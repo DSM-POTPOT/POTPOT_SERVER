@@ -25,7 +25,7 @@ data class Apply(
     val user: User,
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "feed_id", nullable = false)
     val feed: Feed
 ) {
     constructor() : this(
