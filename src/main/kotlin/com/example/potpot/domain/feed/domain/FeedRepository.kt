@@ -7,5 +7,4 @@ import java.util.Optional
 interface FeedRepository : JpaRepository<Feed, Long> {
     fun findAllByCategory(category: Category): List<Feed>
 
-    override fun findById(id: Long): Optional<Feed>
 }
