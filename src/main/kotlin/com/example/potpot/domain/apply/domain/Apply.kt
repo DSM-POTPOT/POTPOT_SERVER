@@ -18,7 +18,7 @@ data class Apply(
     val id: Long = 0,
 
     @Column(name = "is_ok", nullable = false)
-    val isOK: Boolean = false,
+    var isOK: Boolean = false,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
@@ -34,4 +34,9 @@ data class Apply(
         feed = Feed(),
         user = User()
     )
+
+    fun changeStatus(): Apply {
+        isOK = !isOK
+        return this
+    }
 }
