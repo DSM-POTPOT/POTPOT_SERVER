@@ -42,6 +42,10 @@ class SecurityConfig(
                     // feed
                     .requestMatchers(HttpMethod.POST, "/feed").permitAll()
                     .requestMatchers(HttpMethod.DELETE, "/feed").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/feed/{feed-id}").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/feed/query/all").permitAll()
+
+                    // comment
                     .requestMatchers(HttpMethod.POST, "/comment/{feed-id}").permitAll()
                     .requestMatchers(HttpMethod.DELETE, "/comment/{comment-id}").permitAll()
                     .requestMatchers(HttpMethod.PATCH, "/comment/{comment-id}").permitAll()
