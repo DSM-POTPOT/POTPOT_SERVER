@@ -12,7 +12,7 @@ import java.util.Optional
 class GetFeedDetailsService(
     private val feedRepository: FeedRepository
 ) {
-    @Transactional
+    @Transactional(readOnly = true)
     fun execute(feedId: Long): Optional<FeedDetailsResponse> {
         val feed = feedRepository.findById(feedId)
         return feed.map {
