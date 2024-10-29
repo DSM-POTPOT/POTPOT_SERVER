@@ -16,9 +16,9 @@ class ModifyCommentService(
     private val commentFacade: CommentFacade,
 ) {
     @Transactional
-    fun execute(id:Long, request: CommentRequest){
+    fun execute(commentId:Long, request: CommentRequest){
         val user = userFacade.getCurrentUser()
-        val comment = commentFacade.getCurrentComment(id)
+        val comment = commentFacade.getCurrentComment(commentId)
 
         if(!user.equals(comment.user)) throw UserMismatchException
 

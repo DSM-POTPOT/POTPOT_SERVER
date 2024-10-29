@@ -27,16 +27,21 @@ class CommentController(
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/{feed-id}")
     fun createComment(
-        @PathVariable("feed-id") id: Long,
+        @PathVariable("feed-id") feedId: Long,
         @RequestBody @Valid request: CommentRequest
-    ) = createCommentService.execute(id, request)
+    ) = createCommentService.execute(feedId, request)
 
     @ResponseStatus(HttpStatus.OK)
     @DeleteMapping("/{comment-id}")
-    fun deleteComment(@PathVariable("comment-id") id: Long) = deleteCommentService.execute(id)
+    fun deleteComment(
+        @PathVariable("comment-id") commentId: Long
+    ) = deleteCommentService.execute(commentId)
 
     @ResponseStatus(HttpStatus.OK)
     @PatchMapping("/{comment-id}")
-    fun updateComment(@PathVariable("comment-id") id: Long, @RequestBody @Valid request: CommentRequest) =
-        modifyCommentService.execute(id, request)
+    fun updateComment(
+        @PathVariable("comment-id") commentId: Long,
+        @RequestBody @Valid request: CommentRequest
+    ) =
+        modifyCommentService.execute(commentId, request)
 }

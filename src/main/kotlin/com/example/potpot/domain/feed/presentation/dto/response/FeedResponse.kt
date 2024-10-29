@@ -3,7 +3,7 @@ package com.example.potpot.domain.feed.presentation.dto.response
 import com.example.potpot.domain.feed.enum.Category
 
 data class FeedResponse(
-    val id: Long,
+    val feedId: Long,
     val title: String,
     val content: String,
     val date: String,
