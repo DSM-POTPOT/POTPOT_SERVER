@@ -52,8 +52,8 @@ class FeedController(
     ) = modifyFeedService.execute(id, request)
 
     @GetMapping("/{feed-id}")
-    fun getFeed(@PathVariable("feed-id") id: Long) =
-        getFeedDetailsService.execute(id)
+    fun getFeed(@PathVariable("feed-id") feedId: Long) =
+        getFeedDetailsService.execute(feedId)
 
 
     @GetMapping("/query/all")

@@ -1,6 +1,7 @@
 package com.example.potpot.domain.feed.service
 
 import com.example.potpot.domain.feed.domain.FeedRepository
+import com.example.potpot.domain.feed.presentation.dto.response.CommentResponse
 import com.example.potpot.domain.feed.presentation.dto.response.FeedDetailsResponse
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -12,11 +13,11 @@ class GetFeedDetailsService(
     private val feedRepository: FeedRepository
 ) {
     @Transactional
-    fun execute(id: Long): Optional<FeedDetailsResponse> {
-        val feed = feedRepository.findById(id)
+    fun execute(feedId: Long): Optional<FeedDetailsResponse> {
+        val feed = feedRepository.findById(feedId)
         return feed.map {
             FeedDetailsResponse(
-                id = it.id,
+                feedId = it.id,
                 title = it.title,
                 content = it.content,
                 date = it.format(it.date),
@@ -24,7 +25,11 @@ class GetFeedDetailsService(
                 image = it.image,
                 isOK = it.isOK,
                 userName = it.user.name,
-                comment = it.comments.joinToString(", ") { comment -> comment.comment }
+                comment = it.comments.map { comment ->
+                    CommentResponse(
+                        comment = comment.comment,
+                    )
+                }
             )
         }
     }

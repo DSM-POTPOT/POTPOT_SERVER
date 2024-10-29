@@ -15,10 +15,10 @@ class CreateCommentService(
     private val commentRepository: CommentRepository
 ) {
     @Transactional
-    fun execute(id: Long, request: CommentRequest){
+    fun execute(feedId: Long, request: CommentRequest){
         val user = userFacade.getCurrentUser()
-        val feed = feedFacade.getCurrentFeed(id)
-            .orElseThrow{NoSuchElementException("Feed with id $id not found.")}
+        val feed = feedFacade.getCurrentFeed(feedId)
+            .orElseThrow{NoSuchElementException("Feed with id $feedId not found.")}
 
         commentRepository.save(
             Comment(
