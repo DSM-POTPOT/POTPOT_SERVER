@@ -1,12 +1,11 @@
 package com.example.potpot.domain.feed.service
 
-import com.example.potpot.domain.feed.domain.FeedRepository
 import com.example.potpot.domain.comment.presentation.dto.response.CommentResponse
+import com.example.potpot.domain.feed.domain.FeedRepository
 import com.example.potpot.domain.feed.presentation.dto.response.FeedDetailsResponse
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import java.util.Optional
-
 
 @Service
 class GetFeedDetailsService(
@@ -27,7 +26,7 @@ class GetFeedDetailsService(
                 userName = it.user.name,
                 comment = it.comments.map { comment ->
                     CommentResponse(
-                        comment = comment.comment,
+                        comment = comment.comment
                     )
                 }
             )

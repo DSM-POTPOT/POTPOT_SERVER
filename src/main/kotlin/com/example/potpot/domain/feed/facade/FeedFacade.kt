@@ -9,7 +9,7 @@ import java.util.Optional
 class FeedFacade(
     private val feedRepository: FeedRepository
 ) {
-    fun getCurrentFeed(id: Long): Optional<Feed>{
+    fun getCurrentFeed(id: Long): Optional<Feed> {
         return feedRepository.findById(id)
     }
 }
