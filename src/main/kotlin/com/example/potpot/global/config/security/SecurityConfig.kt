@@ -38,6 +38,17 @@ class SecurityConfig(
                     .requestMatchers(HttpMethod.GET, "/user/user").permitAll()
                     .requestMatchers(HttpMethod.POST, "/user/file").permitAll()
                     .anyRequest().authenticated()
+
+                    // feed
+                    .requestMatchers(HttpMethod.POST, "/feed").authenticated()
+                    .requestMatchers(HttpMethod.DELETE, "/feed").authenticated()
+                    .requestMatchers(HttpMethod.GET, "/feed/{feed-id}").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/feed/query/all").permitAll()
+
+                    // comment
+                    .requestMatchers(HttpMethod.POST, "/comment/{feed-id}").authenticated()
+                    .requestMatchers(HttpMethod.DELETE, "/comment/{comment-id}").authenticated()
+                    .requestMatchers(HttpMethod.PATCH, "/comment/{comment-id}").authenticated()
             }
         http
             .apply(FilterConfig(objectMapper, tokenProvider))

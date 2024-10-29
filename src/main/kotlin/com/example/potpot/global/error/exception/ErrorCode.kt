@@ -20,6 +20,7 @@ enum class ErrorCode(
     USER_NOT_FOUND(404, "User Not Found"),
     FEED_NOT_FOUND(404, "Feed Not Found"),
     APPLY_NOT_FOUND(404, "Application Not Found"),
+    COMMENT_NOT_FOUND(404, "Comment Not Found"),
 
     ALREADY_ACCOUNT_ID(409, "Already Account Id"),
     ALREADY_EXIST_LIKE(409, "Already Exist Like"),

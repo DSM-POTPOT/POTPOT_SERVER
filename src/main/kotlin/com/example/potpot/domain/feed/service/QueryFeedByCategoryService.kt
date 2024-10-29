@@ -16,7 +16,7 @@ class QueryFeedByCategoryService(
         val feeds = feedRepository.findAllByCategory(category)
         return feeds.map {
             FeedResponse(
-                id = it.id,
+                feedId = it.id,
                 title = it.title,
                 content = it.content,
                 date = it.format(it.date),
