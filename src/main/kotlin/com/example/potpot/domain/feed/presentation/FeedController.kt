@@ -1,5 +1,6 @@
 package com.example.potpot.domain.feed.presentation
 
+import com.example.potpot.domain.feed.service.GetFeedDetailsService
 import com.example.potpot.domain.feed.enum.Category
 import com.example.potpot.domain.feed.presentation.dto.request.FeedRequest
 import com.example.potpot.domain.feed.service.*
