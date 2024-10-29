@@ -1,11 +1,10 @@
-package com.example.potpot.domain.feed.presentation
+package com.example.potpot.domain.comment.presentation
 
-import com.example.potpot.domain.feed.presentation.dto.request.CommentRequest
-import com.example.potpot.domain.feed.service.CreateCommentService
-import com.example.potpot.domain.feed.service.DeleteCommentService
-import com.example.potpot.domain.feed.service.ModifyCommentService
+import com.example.potpot.domain.comment.presentation.dto.request.CommentRequest
+import com.example.potpot.domain.comment.service.CreateCommentService
+import com.example.potpot.domain.comment.service.DeleteCommentService
+import com.example.potpot.domain.comment.service.ModifyCommentService
 import jakarta.validation.Valid
-import jakarta.validation.constraints.Pattern
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.PatchMapping

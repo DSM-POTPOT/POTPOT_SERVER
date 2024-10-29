@@ -1,10 +1,7 @@
-package com.example.potpot.domain.feed.service
+package com.example.potpot.domain.comment.service
 
-import com.example.potpot.domain.feed.domain.Comment
-import com.example.potpot.domain.feed.domain.CommentRepository
-import com.example.potpot.domain.feed.facade.CommentFacade
-import com.example.potpot.domain.feed.facade.FeedFacade
-import com.example.potpot.domain.feed.presentation.dto.request.CommentRequest
+import com.example.potpot.domain.comment.facade.CommentFacade
+import com.example.potpot.domain.comment.presentation.dto.request.CommentRequest
 import com.example.potpot.domain.user.exception.UserMismatchException
 import com.example.potpot.domain.user.facade.UserFacade
 import org.springframework.stereotype.Service

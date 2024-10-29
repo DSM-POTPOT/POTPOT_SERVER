@@ -1,5 +1,6 @@
 package com.example.potpot.domain.feed.domain
 
+import com.example.potpot.domain.comment.domain.Comment
 import com.example.potpot.domain.feed.enum.Category
 import com.example.potpot.domain.user.domain.User
 import jakarta.persistence.CascadeType

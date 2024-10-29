@@ -1,8 +1,8 @@
-package com.example.potpot.domain.feed.domain
+package com.example.potpot.domain.comment.domain
 
+import com.example.potpot.domain.feed.domain.Feed
 import com.example.potpot.domain.user.domain.User
 import jakarta.persistence.*
-import org.joda.time.LocalDate
 
 @Entity(name = "tbl_comment")
 data class Comment(
