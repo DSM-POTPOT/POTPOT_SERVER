@@ -40,15 +40,15 @@ class SecurityConfig(
                     .anyRequest().authenticated()
 
                     // feed
-                    .requestMatchers(HttpMethod.POST, "/feed").permitAll()
-                    .requestMatchers(HttpMethod.DELETE, "/feed").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/feed").authenticated()
+                    .requestMatchers(HttpMethod.DELETE, "/feed").authenticated()
                     .requestMatchers(HttpMethod.GET, "/feed/{feed-id}").permitAll()
                     .requestMatchers(HttpMethod.GET, "/feed/query/all").permitAll()
 
                     // comment
-                    .requestMatchers(HttpMethod.POST, "/comment/{feed-id}").permitAll()
-                    .requestMatchers(HttpMethod.DELETE, "/comment/{comment-id}").permitAll()
-                    .requestMatchers(HttpMethod.PATCH, "/comment/{comment-id}").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/comment/{feed-id}").authenticated()
+                    .requestMatchers(HttpMethod.DELETE, "/comment/{comment-id}").authenticated()
+                    .requestMatchers(HttpMethod.PATCH, "/comment/{comment-id}").authenticated()
             }
         http
             .apply(FilterConfig(objectMapper, tokenProvider))
