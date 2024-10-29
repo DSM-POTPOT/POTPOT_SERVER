@@ -37,7 +37,6 @@ class SecurityConfig(
                     .requestMatchers(HttpMethod.GET, "/user/email").permitAll()
                     .requestMatchers(HttpMethod.GET, "/user/user").permitAll()
                     .requestMatchers(HttpMethod.POST, "/user/file").permitAll()
-                    .anyRequest().authenticated()
 
                     // feed
                     .requestMatchers(HttpMethod.POST, "/feed").authenticated()
