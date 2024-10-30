@@ -2,8 +2,12 @@ package com.example.potpot.domain.feed.presentation
 
 import com.example.potpot.domain.feed.enum.Category
 import com.example.potpot.domain.feed.presentation.dto.request.FeedRequest
-import com.example.potpot.domain.feed.service.*
+import com.example.potpot.domain.feed.service.CreateFeedService
+import com.example.potpot.domain.feed.service.DeleteFeedService
 import com.example.potpot.domain.feed.service.GetFeedDetailsService
+import com.example.potpot.domain.feed.service.ModifyFeedService
+import com.example.potpot.domain.feed.service.QueryAllFeedService
+import com.example.potpot.domain.feed.service.QueryFeedByCategoryService
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.DeleteMapping

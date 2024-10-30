@@ -41,7 +41,6 @@ class UserController(
         request: SignUpRequest
     ) = signUpService.execute(request)
 
-
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/signin")
     fun signIn(
@@ -49,20 +48,17 @@ class UserController(
         request: SignInRequest
     ): TokenResponse = signInService.execute(request)
 
-
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/email")
     fun verifySend(
         @RequestParam("email") request: EmailVerifyNumberRequest
     ) = emailVerifyNumberService.sendCodeToEmail(request)
 
-
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/email")
     fun verifyMatch(
         request: EmailVerifyNumberMatchRequest
     ) = emailVerifyNumberMatchService.verifiedCode(request)
-
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/users")
@@ -75,5 +71,4 @@ class UserController(
         @RequestParam("file") multipartFile: MultipartFile
     ): ProfileImageUploadResponse =
         profileImageUploadService.execute(multipartFile)
-
 }

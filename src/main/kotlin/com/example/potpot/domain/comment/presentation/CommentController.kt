@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
 
-
 @RestController
 @RequestMapping("/comment")
 class CommentController(
@@ -27,7 +26,8 @@ class CommentController(
     @PostMapping("/{feed-id}")
     fun createComment(
         @PathVariable("feed-id") feedId: Long,
-        @RequestBody @Valid request: CommentRequest
+        @RequestBody @Valid
+        request: CommentRequest
     ) = createCommentService.execute(feedId, request)
 
     @ResponseStatus(HttpStatus.OK)
@@ -40,7 +40,8 @@ class CommentController(
     @PatchMapping("/{comment-id}")
     fun updateComment(
         @PathVariable("comment-id") commentId: Long,
-        @RequestBody @Valid request: CommentRequest
+        @RequestBody @Valid
+        request: CommentRequest
     ) =
         modifyCommentService.execute(commentId, request)
 }

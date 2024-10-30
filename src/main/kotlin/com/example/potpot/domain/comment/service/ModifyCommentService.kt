@@ -10,14 +10,14 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 class ModifyCommentService(
     private val userFacade: UserFacade,
-    private val commentFacade: CommentFacade,
+    private val commentFacade: CommentFacade
 ) {
     @Transactional
-    fun execute(commentId:Long, request: CommentRequest){
+    fun execute(commentId: Long, request: CommentRequest) {
         val user = userFacade.getCurrentUser()
         val comment = commentFacade.getCurrentComment(commentId)
 
-        if(!user.equals(comment.user)) throw UserMismatchException
+        if (!user.equals(comment.user)) throw UserMismatchException
 
         comment.modifyComment(request.comment)
     }
