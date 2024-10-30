@@ -39,42 +39,41 @@ class UserController(
     fun signup(
         @RequestBody @Valid
         request: SignUpRequest
-    ) {
-        signUpService.execute(request)
-    }
+    ) = signUpService.execute(request)
+
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/signin")
     fun signIn(
         @RequestBody @Valid
         request: SignInRequest
-    ): TokenResponse {
-        return signInService.execute(request)
-    }
+    ): TokenResponse = signInService.execute(request)
+
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/email")
     fun verifySend(
         @RequestParam("email") request: EmailVerifyNumberRequest
-    ) {
-        emailVerifyNumberService.sendCodeToEmail(request)
-    }
+    ) = emailVerifyNumberService.sendCodeToEmail(request)
+
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/email")
-    fun verifyMatch(request: EmailVerifyNumberMatchRequest) {
-        emailVerifyNumberMatchService.verifiedCode(request)
-    }
+    fun verifyMatch(
+        request: EmailVerifyNumberMatchRequest
+    ) = emailVerifyNumberMatchService.verifiedCode(request)
+
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/users")
-    fun getUserInfo(): UserInfoResponse {
-        return userInfoService.execute()
-    }
+    fun getUserInfo(): UserInfoResponse =
+        userInfoService.execute()
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/file")
-    fun imageUpload(@RequestParam("file") multipartFile: MultipartFile): ProfileImageUploadResponse {
-        return profileImageUploadService.execute(multipartFile)
-    }
+    fun imageUpload(
+        @RequestParam("file") multipartFile: MultipartFile
+    ): ProfileImageUploadResponse =
+        profileImageUploadService.execute(multipartFile)
+
 }
