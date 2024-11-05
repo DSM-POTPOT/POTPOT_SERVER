@@ -25,4 +25,8 @@ class S3Utils(
         amazonS3.putObject(bucketName, originalFilename, multipartFile.inputStream, metadata)
         return amazonS3.getUrl(bucketName, originalFilename).toString()
     }
+
+    fun delete(objectName: String) {
+        amazonS3.deleteObject(bucketName, objectName)
+    }
 }
