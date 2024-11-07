@@ -51,9 +51,11 @@ class FeedController(
         @RequestParam(name = "id")
         id: Long,
         @Valid
-        @RequestBody
-        request: FeedRequest
-    ) = modifyFeedService.execute(id, request)
+        @RequestPart
+        request: FeedRequest,
+        @RequestPart(name = "file")
+        file: MultipartFile?,
+    ) = modifyFeedService.execute(id, request, file)
 
     @GetMapping("/query")
     fun getFeed(@RequestParam("feed_id") feedId: Long) =
