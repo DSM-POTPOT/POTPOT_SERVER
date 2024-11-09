@@ -37,7 +37,7 @@ data class Feed(
     @Column(nullable = false)
     var category: Category = Category.ETC,
 
-    val image: String? = null,
+    var image: String? = null,
 
     @Column(name = "is_ok", nullable = false)
     val isOK: Boolean = true,
@@ -59,11 +59,12 @@ data class Feed(
         user = User()
     )
 
-    fun modifyFeed(title: String, content: String, date: LocalDate, category: Category) {
+    fun modifyFeed(title: String, content: String, date: LocalDate, category: Category, image: String?) {
         this.title = title
         this.content = content
         this.date = date
         this.category = category
+        this.image = image
     }
 
     fun format(date: LocalDate) = date.format(DateTimeFormatter.ofPattern("yy.MM.dd"))!!
