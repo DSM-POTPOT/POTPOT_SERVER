@@ -12,5 +12,5 @@ data class FeedDetailsResponse(
     val image: String?,
     val isOK: Boolean,
     val userName: String,
-    val comment: List<CommentResponse>
+    val commentList: List<CommentResponse>
 )

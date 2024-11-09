@@ -24,7 +24,7 @@ class GetFeedDetailsService(
                 image = it.image,
                 isOK = it.isOK,
                 userName = it.user.name,
-                comment = it.comments.map { comment ->
+                commentList = it.comments.map { comment ->
                     CommentResponse(
                         comment = comment.comment
                     )
