@@ -6,7 +6,6 @@ import com.example.potpot.domain.feed.domain.FeedRepository
 import com.example.potpot.domain.feed.exception.FeedNotFoundException
 import com.example.potpot.domain.user.exception.UserMismatchException
 import com.example.potpot.domain.user.facade.UserFacade
-import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -20,7 +19,7 @@ class QueryFeedApplyService(
     @Transactional(readOnly = true)
     fun execute(feedId: Long): List<QueryByFeedResponse> {
         val user = userFacade.getCurrentUser()
-        val feed = feedRepository.findByIdOrNull(feedId) ?: throw FeedNotFoundException
+        val feed = feedRepository.findById(feedId) ?: throw FeedNotFoundException
         val applies = applyRepository.findByFeed(feed)
 
         if (user.schoolNumber != feed.user.schoolNumber) throw UserMismatchException

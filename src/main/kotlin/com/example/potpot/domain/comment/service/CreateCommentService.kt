@@ -3,6 +3,7 @@ package com.example.potpot.domain.comment.service
 import com.example.potpot.domain.comment.domain.Comment
 import com.example.potpot.domain.comment.domain.CommentRepository
 import com.example.potpot.domain.comment.presentation.dto.request.CommentRequest
+import com.example.potpot.domain.feed.exception.FeedNotFoundException
 import com.example.potpot.domain.feed.facade.FeedFacade
 import com.example.potpot.domain.user.facade.UserFacade
 import org.springframework.stereotype.Service
@@ -17,9 +18,7 @@ class CreateCommentService(
     @Transactional
     fun execute(feedId: Long, request: CommentRequest) {
         val user = userFacade.getCurrentUser()
-        val feed = feedFacade.getCurrentFeed(feedId)
-            .orElseThrow { NoSuchElementException("Feed with id $feedId not found.") }
-
+        val feed = feedFacade.getCurrentFeed(feedId) ?: throw FeedNotFoundException
         commentRepository.save(
             Comment(
                 comment = request.comment,

@@ -20,7 +20,7 @@ class ModifyFeedService(
     @Transactional
     fun execute(id: Long, request: FeedRequest, file: MultipartFile?) {
         val user = userFacade.getCurrentUser()
-        val feed = feedRepository.findById(id).orElseThrow() ?: throw FeedNotFoundException
+        val feed = feedRepository.findById(id) ?: throw FeedNotFoundException
 
         if (user.id != feed.user.id) throw UserMismatchException
         val image = handleImage(feed.image, file)
