@@ -24,6 +24,6 @@ class QueryAllFeedService(
                 isOK = it.isOK,
                 userName = it.user.name
             )
-        }
+        }.sortedByDescending { it.feedId }
     }
 }
