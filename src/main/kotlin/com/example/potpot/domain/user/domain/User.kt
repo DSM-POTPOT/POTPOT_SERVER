@@ -13,7 +13,7 @@ class User(
     @Column(name = "user_id", length = 5, nullable = false)
     val id: Int,
 
-    @Column(name = "school_number", length = 5, nullable = false)
+    @Column(name = "school_number", length = 5, nullable = false, unique = true)
     val schoolNumber: String,
 
     @Column(length = 10, nullable = false)
