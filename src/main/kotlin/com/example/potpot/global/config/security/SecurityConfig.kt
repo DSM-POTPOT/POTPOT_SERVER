@@ -23,6 +23,7 @@ class SecurityConfig(
     @Bean
     fun filterChain(http: HttpSecurity): SecurityFilterChain {
         http
+            .cors().and()
             .csrf { it.disable() }
             .formLogin { it.disable() }
             .cors(Customizer.withDefaults())
@@ -35,13 +36,13 @@ class SecurityConfig(
                     .requestMatchers(HttpMethod.POST, "/user/signin").permitAll()
                     .requestMatchers(HttpMethod.POST, "/user/email").permitAll()
                     .requestMatchers(HttpMethod.GET, "/user/email").permitAll()
-                    .requestMatchers(HttpMethod.GET, "/user/user").permitAll()
-                    .requestMatchers(HttpMethod.POST, "/user/file").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/user/users").authenticated()
+                    .requestMatchers(HttpMethod.POST, "/user/file").authenticated()
                     // feed
                     .requestMatchers(HttpMethod.POST, "/feed").authenticated()
                     .requestMatchers(HttpMethod.DELETE, "/feed").authenticated()
-                    .requestMatchers(HttpMethod.GET, "/feed/{feed-id}").permitAll()
-                    .requestMatchers(HttpMethod.GET, "/feed/query/all").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/feed/{feed-id}").authenticated()
+                    .requestMatchers(HttpMethod.GET, "/feed/query/all").authenticated()
                     // comment
                     .requestMatchers(HttpMethod.POST, "/comment/{feed-id}").authenticated()
                     .requestMatchers(HttpMethod.DELETE, "/comment/{comment-id}").authenticated()

@@ -1,6 +1,6 @@
 package com.example.potpot.global.utils
 
-import com.amazonaws.services.s3.AmazonS3Client
+import com.amazonaws.services.s3.AmazonS3
 import com.amazonaws.services.s3.model.ObjectMetadata
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
@@ -9,7 +9,7 @@ import java.util.*
 
 @Component
 class S3Utils(
-    private val amazonS3: AmazonS3Client,
+    private val amazonS3: AmazonS3,
 
     @Value("\${cloud.aws.s3.bucket}")
     private val bucketName: String
