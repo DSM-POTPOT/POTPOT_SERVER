@@ -34,7 +34,10 @@ spring:
     allow-bean-definition-overriding: true
   servlet:
     multipart:
-      max-file-size: 10MB
+      enabled: true
+      max-file-size: 30MB
+      max-request-size: 30MB
+
 jwt:
   secret_key: ${SECRET_KEY:kfjkljdjalksfjdlkjdflkjflajdlfkasfjdksjfladkjslkjsdlfjdjaflksdjflsakfjeoiwwdkjnv}
   access_exp: ${ACCESS_EXP}
