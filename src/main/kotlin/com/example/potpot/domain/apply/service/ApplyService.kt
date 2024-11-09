@@ -3,11 +3,11 @@ package com.example.potpot.domain.apply.service
 import com.example.potpot.domain.apply.domain.Apply
 import com.example.potpot.domain.apply.domain.ApplyRepository
 import com.example.potpot.domain.apply.exception.AlreadyApplyException
+import com.example.potpot.domain.apply.exception.NotAllowSelfApplicationException
 import com.example.potpot.domain.apply.presentation.dto.request.ApplyRequest
 import com.example.potpot.domain.feed.domain.FeedRepository
 import com.example.potpot.domain.feed.exception.FeedNotFoundException
 import com.example.potpot.domain.user.facade.UserFacade
-import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -20,8 +20,9 @@ class ApplyService(
     @Transactional
     fun execute(request: ApplyRequest) {
         val user = userFacade.getCurrentUser()
-        val feed = feedRepository.findByIdOrNull(request.feedId) ?: throw FeedNotFoundException
+        val feed = feedRepository.findById(request.feedId) ?: throw FeedNotFoundException
 
+        if (feed.user.schoolNumber == user.schoolNumber) throw NotAllowSelfApplicationException
         if (applyRepository.existsByUserAndFeed(user, feed)) throw AlreadyApplyException
 
         applyRepository.save(

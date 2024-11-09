@@ -1,5 +1,6 @@
 package com.example.potpot.domain.apply.presentation.dto.request
 
 data class ChangeStatusRequest(
-    val id: Long
+    val id: Long,
+    val status: Boolean
 )

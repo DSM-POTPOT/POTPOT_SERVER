@@ -33,10 +33,12 @@ class ApplyController(
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping
-    fun delete(@RequestParam(name = "id")id: Long) = deleteApplyService.execute(id)
+    fun delete(@RequestParam(name = "feed_id")id: Long) = deleteApplyService.execute(id)
 
     @PatchMapping
-    fun update(@RequestBody request: ChangeStatusRequest) = changeIsOKService.execute(request)
+    fun update(@RequestBody request: ChangeStatusRequest) = changeIsOKService.execute(
+        request
+    )
 
     @GetMapping("/query/my")
     fun queryMyApply() = queryMyApplyService.execute()

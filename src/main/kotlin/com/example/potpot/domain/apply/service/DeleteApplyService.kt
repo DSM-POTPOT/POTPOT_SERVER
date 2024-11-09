@@ -4,7 +4,6 @@ import com.example.potpot.domain.apply.domain.ApplyRepository
 import com.example.potpot.domain.apply.exception.ApplyNotFoundException
 import com.example.potpot.domain.user.exception.UserMismatchException
 import com.example.potpot.domain.user.facade.UserFacade
-import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -15,9 +14,9 @@ class DeleteApplyService(
 ) {
 
     @Transactional
-    fun execute(id: Long) {
+    fun execute(feedId: Long) {
         val user = userFacade.getCurrentUser()
-        val apply = applyRepository.findByIdOrNull(id) ?: throw ApplyNotFoundException
+        val apply = applyRepository.findByFeedIdAndUserId(feedId, user.id) ?: throw ApplyNotFoundException
 
         if (user.schoolNumber != apply.user.schoolNumber) throw UserMismatchException
         applyRepository.delete(apply)

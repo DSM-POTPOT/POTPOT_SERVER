@@ -22,10 +22,15 @@ class ChangeIsOKService(
     fun execute(request: ChangeStatusRequest) {
         val user = userFacade.getCurrentUser()
         val apply = applyRepository.findByIdOrNull(request.id) ?: throw ApplyNotFoundException
-        val feed = feedRepository.findByIdOrNull(apply.feed.id) ?: throw FeedNotFoundException
+        val feed = feedRepository.findById(apply.feed.id) ?: throw FeedNotFoundException
 
         if (user.schoolNumber != feed.user.schoolNumber) throw UserMismatchException
 
-        apply.changeStatus()
+        if (!request.status) {
+            applyRepository.deleteById(apply.id)
+            return
+        }
+
+        apply.isOK = true
     }
 }

@@ -9,5 +9,7 @@ interface ApplyRepository : JpaRepository<Apply, Long> {
 
     fun findByFeed(feed: Feed): List<Apply>
 
+    fun findByFeedIdAndUserId(feedId: Long, userId: Int): Apply?
+
     fun existsByUserAndFeed(user: User, feed: Feed): Boolean
 }

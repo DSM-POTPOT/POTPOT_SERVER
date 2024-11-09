@@ -38,9 +38,4 @@ data class Apply(
         feed = Feed(),
         user = User()
     )
-
-    fun changeStatus(): Apply {
-        isOK = !isOK
-        return this
-    }
 }
