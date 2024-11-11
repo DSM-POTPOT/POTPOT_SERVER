@@ -1,0 +1,49 @@
+version: '3.8'
+
+
+services:
+  mysql:
+    container_name: mysql-container
+    image: mysql:8.0
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_DATABASE: POTPOT
+    ports:
+      - "3306:3306"
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    networks:
+      - test_network
+
+  redis:
+    container_name: redis-container
+    image: redis:latest
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
+    command: [ "redis-server", "--appendonly", "yes" ]
+    ports:
+      - "6379:6379"
+    networks:
+      - test_network
+
+  application:
+    image: eeuunn/potpot-image
+    ports:
+      - 8080:8080
+    env_file: .env
+    depends_on:
+      - mysql
+      - redis
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    networks:
+      - test_network
+
+networks:
+  test_network:
