@@ -35,7 +35,7 @@ data class Feed(
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    var category: Category = Category.ETC,
+    var category: Category = Category.TAXI,
 
     var image: String? = null,
 
@@ -54,7 +54,7 @@ data class Feed(
         title = "",
         content = "",
         date = LocalDate.now(),
-        category = Category.ETC,
+        category = Category.TAXI,
         image = null,
         user = User()
     )
