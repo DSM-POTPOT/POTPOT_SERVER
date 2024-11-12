@@ -8,6 +8,7 @@ import com.example.potpot.domain.feed.service.GetFeedDetailsService
 import com.example.potpot.domain.feed.service.ModifyFeedService
 import com.example.potpot.domain.feed.service.QueryAllFeedService
 import com.example.potpot.domain.feed.service.QueryFeedByCategoryService
+import com.example.potpot.domain.feed.service.QueryMyFeedService
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.DeleteMapping
@@ -29,7 +30,8 @@ class FeedController(
     private val modifyFeedService: ModifyFeedService,
     private val queryAllFeedService: QueryAllFeedService,
     private val queryFeedByCategoryService: QueryFeedByCategoryService,
-    private val getFeedDetailsService: GetFeedDetailsService
+    private val getFeedDetailsService: GetFeedDetailsService,
+    private val queryMyFeedService: QueryMyFeedService
 ) {
 
     @ResponseStatus(HttpStatus.CREATED)
@@ -66,4 +68,7 @@ class FeedController(
     @GetMapping("/query/category")
     fun queryByCategory(@RequestParam(name = "category") category: Category) =
         queryFeedByCategoryService.execute(category)
+
+    @GetMapping("/query/my")
+    fun queryMyFeedService() = queryMyFeedService.execute()
 }

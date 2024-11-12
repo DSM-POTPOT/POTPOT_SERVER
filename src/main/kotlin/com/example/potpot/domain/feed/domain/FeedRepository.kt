@@ -12,5 +12,7 @@ interface FeedRepository : Repository<Feed, Long> {
 
     fun findAll(): List<Feed>
 
+    fun findAllByUserId(userId: Int): List<Feed>
+
     fun deleteById(id: Long)
 }
