@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PatchMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
@@ -58,8 +59,8 @@ class FeedController(
         file: MultipartFile?
     ) = modifyFeedService.execute(id, request, file)
 
-    @GetMapping("/query")
-    fun getFeed(@RequestParam("feed_id") feedId: Long) =
+    @GetMapping("{feed-id}")
+    fun getFeed(@PathVariable("feed-id") feedId: Long) =
         getFeedDetailsService.execute(feedId)
 
     @GetMapping("/query/all")

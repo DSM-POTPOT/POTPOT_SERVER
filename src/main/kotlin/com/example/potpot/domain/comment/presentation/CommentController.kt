@@ -42,6 +42,5 @@ class CommentController(
         @PathVariable("comment-id") commentId: Long,
         @RequestBody @Valid
         request: CommentRequest
-    ) =
-        modifyCommentService.execute(commentId, request)
+    ) = modifyCommentService.execute(commentId, request)
 }
