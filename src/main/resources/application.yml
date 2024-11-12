@@ -18,6 +18,7 @@ spring:
   data:
     redis:
       port: ${REDIS_PORT}
+      host: ${REDIS_HOST}
       lettuce:
         pool:
           max-active: 8
