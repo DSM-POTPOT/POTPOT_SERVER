@@ -46,10 +46,10 @@ class SecurityConfig(
                     // feed
                     .requestMatchers(HttpMethod.POST, "/feed").authenticated()
                     .requestMatchers(HttpMethod.DELETE, "/feed").authenticated()
-                    .requestMatchers(HttpMethod.GET, "/feed/{feed-id}").authenticated()
                     .requestMatchers(HttpMethod.GET, "/feed/query/all").authenticated()
                     .requestMatchers(HttpMethod.GET, "/feed/query/my").authenticated()
                     // comment
+                    .requestMatchers(HttpMethod.GET, "/comment/{feed-id}").authenticated()
                     .requestMatchers(HttpMethod.POST, "/comment/{feed-id}").authenticated()
                     .requestMatchers(HttpMethod.DELETE, "/comment/{comment-id}").authenticated()
                     .requestMatchers(HttpMethod.PATCH, "/comment/{comment-id}").authenticated()
