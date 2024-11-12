@@ -5,6 +5,7 @@ import com.example.potpot.domain.comment.service.CreateCommentService
 import com.example.potpot.domain.comment.service.DeleteCommentService
 import com.example.potpot.domain.comment.service.GetFeedDetailsService
 import com.example.potpot.domain.comment.service.ModifyCommentService
+import com.example.potpot.domain.feed.presentation.dto.response.FeedDetailsResponse
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.DeleteMapping
@@ -50,5 +51,6 @@ class CommentController(
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/{feed-id}")
-    fun getDetailsFeed(@PathVariable("feed-id") feedId: Long) = getFeedDetailsService.execute(feedId)
+    fun getDetailsFeed(@PathVariable("feed-id") feedId: Long): FeedDetailsResponse =
+        getFeedDetailsService.execute(feedId)
 }

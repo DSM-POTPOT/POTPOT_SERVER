@@ -4,14 +4,12 @@ import com.example.potpot.domain.comment.presentation.dto.response.CommentRespon
 import com.example.potpot.domain.feed.domain.FeedRepository
 import com.example.potpot.domain.feed.exception.FeedNotFoundException
 import com.example.potpot.domain.feed.presentation.dto.response.FeedDetailsResponse
-import com.example.potpot.domain.user.facade.UserFacade
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
 @Service
 class GetFeedDetailsService(
-    private val feedRepository: FeedRepository,
-    private val userFacade: UserFacade
+    private val feedRepository: FeedRepository
 ) {
     @Transactional(readOnly = true)
     fun execute(feedId: Long): FeedDetailsResponse {
