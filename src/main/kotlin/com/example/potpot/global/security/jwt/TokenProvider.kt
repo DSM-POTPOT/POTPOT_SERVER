@@ -44,7 +44,7 @@ class TokenProvider(
     private fun createToken(schoolNumber: String, type: String, exp: Long): String {
         return Jwts.builder()
             .setSubject(schoolNumber)
-            .claim("schoolNumber", schoolNumber)
+            .claim("school_number", schoolNumber)
             .signWith(secretKey, SignatureAlgorithm.HS256)
             .setExpiration(Date(System.currentTimeMillis() + exp * 1000))
             .setIssuedAt(Date(System.currentTimeMillis()))
