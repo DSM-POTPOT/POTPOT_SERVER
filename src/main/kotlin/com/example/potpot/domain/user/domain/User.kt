@@ -11,7 +11,7 @@ class User(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id", length = 5, nullable = false)
-    val id: Int,
+    val id: Long,
 
     @Column(name = "school_number", length = 5, nullable = false, unique = true)
     val schoolNumber: String,
@@ -30,7 +30,7 @@ class User(
 ) {
 
     public constructor() : this(0, "", "", "", "", "")
-    constructor(id: Int, schoolNumber: String, name: String, password: String, email: String) : this(
+    constructor(id: Long, schoolNumber: String, name: String, password: String, email: String) : this(
         id,
         "",
         "",
