@@ -1,4 +1,4 @@
-package com.example.potpot.domain.feed.service
+package com.example.potpot.domain.comment.service
 
 import com.example.potpot.domain.comment.presentation.dto.response.CommentResponse
 import com.example.potpot.domain.feed.domain.FeedRepository

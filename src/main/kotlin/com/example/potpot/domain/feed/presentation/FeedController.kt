@@ -4,7 +4,6 @@ import com.example.potpot.domain.feed.enum.Category
 import com.example.potpot.domain.feed.presentation.dto.request.FeedRequest
 import com.example.potpot.domain.feed.service.CreateFeedService
 import com.example.potpot.domain.feed.service.DeleteFeedService
-import com.example.potpot.domain.feed.service.GetFeedDetailsService
 import com.example.potpot.domain.feed.service.ModifyFeedService
 import com.example.potpot.domain.feed.service.QueryAllFeedService
 import com.example.potpot.domain.feed.service.QueryFeedByCategoryService
@@ -14,7 +13,6 @@ import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PatchMapping
-import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
@@ -31,7 +29,6 @@ class FeedController(
     private val modifyFeedService: ModifyFeedService,
     private val queryAllFeedService: QueryAllFeedService,
     private val queryFeedByCategoryService: QueryFeedByCategoryService,
-    private val getFeedDetailsService: GetFeedDetailsService,
     private val queryMyFeedService: QueryMyFeedService
 ) {
 
@@ -58,10 +55,6 @@ class FeedController(
         @RequestPart(name = "file")
         file: MultipartFile?
     ) = modifyFeedService.execute(id, request, file)
-
-    @GetMapping("{feed-id}")
-    fun getFeed(@PathVariable("feed-id") feedId: Long) =
-        getFeedDetailsService.execute(feedId)
 
     @GetMapping("/query/all")
     fun queryAll() = queryAllFeedService.execute()
