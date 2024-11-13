@@ -57,6 +57,7 @@ class UserController(
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/email")
     fun verifyMatch(
+        @RequestBody @Valid
         request: EmailVerifyNumberMatchRequest
     ) = emailVerifyNumberMatchService.verifiedCode(request)
 
