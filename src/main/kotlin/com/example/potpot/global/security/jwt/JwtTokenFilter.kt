@@ -14,6 +14,13 @@ class JwtTokenFilter(
         response: HttpServletResponse,
         filterChain: FilterChain
     ) {
+        val requestURI = request.requestURI
+
+        if (requestURI.startsWith("/user/email")) {
+            filterChain.doFilter(request, response) // 토큰 검증 없이 필터 통과
+            return
+        }
+
         val token = tokenProvider.resolveToken(request)
 
         if (token != null) {
