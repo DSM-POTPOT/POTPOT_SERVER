@@ -17,7 +17,7 @@ class User(
     val schoolNumber: String,
 
     @Column(length = 10, nullable = false)
-    val name: String,
+    var name: String,
 
     @Column(length = 80, nullable = false)
     val password: String,
@@ -38,4 +38,8 @@ class User(
         "",
         ""
     )
+
+    fun updateUserInfo(name: String) {
+        this.name = name
+    }
 }

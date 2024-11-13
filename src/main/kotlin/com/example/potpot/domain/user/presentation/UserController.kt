@@ -6,6 +6,7 @@ import com.example.potpot.domain.auth.service.EmailVerifyNumberMatchService
 import com.example.potpot.domain.auth.service.EmailVerifyNumberService
 import com.example.potpot.domain.user.presentation.dto.request.SignInRequest
 import com.example.potpot.domain.user.presentation.dto.request.SignUpRequest
+import com.example.potpot.domain.user.presentation.dto.request.UserInfoUpdateRequest
 import com.example.potpot.domain.user.presentation.dto.response.ProfileImageUploadResponse
 import com.example.potpot.domain.user.presentation.dto.response.TokenResponse
 import com.example.potpot.domain.user.presentation.dto.response.UserInfoResponse
@@ -13,9 +14,11 @@ import com.example.potpot.domain.user.service.ProfileImageUploadService
 import com.example.potpot.domain.user.service.SignInService
 import com.example.potpot.domain.user.service.SignUpService
 import com.example.potpot.domain.user.service.UserInfoService
+import com.example.potpot.domain.user.service.UserInfoUpdateService
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PatchMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -32,7 +35,8 @@ class UserController(
     private val emailVerifyNumberService: EmailVerifyNumberService,
     private val emailVerifyNumberMatchService: EmailVerifyNumberMatchService,
     private val userInfoService: UserInfoService,
-    private val profileImageUploadService: ProfileImageUploadService
+    private val profileImageUploadService: ProfileImageUploadService,
+    private val userInfoUpdateService: UserInfoUpdateService
 ) {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
@@ -65,6 +69,13 @@ class UserController(
     @GetMapping("/users")
     fun getUserInfo(): UserInfoResponse =
         userInfoService.execute()
+
+    @ResponseStatus(HttpStatus.OK)
+    @PatchMapping("/users")
+    fun updateUserInfo(
+        @RequestBody @Valid
+        request: UserInfoUpdateRequest
+    ) = userInfoUpdateService.execute(request)
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/file")

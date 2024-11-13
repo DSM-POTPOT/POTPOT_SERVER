@@ -42,6 +42,7 @@ class SecurityConfig(
                     .requestMatchers(HttpMethod.POST, "/user/email").permitAll()
                     .requestMatchers(HttpMethod.GET, "/user/email").permitAll()
                     .requestMatchers(HttpMethod.GET, "/user/users").authenticated()
+                    .requestMatchers(HttpMethod.PATCH, "/user/users").authenticated()
                     .requestMatchers(HttpMethod.POST, "/user/file").authenticated()
                     // feed
                     .requestMatchers(HttpMethod.POST, "/feed").authenticated()
