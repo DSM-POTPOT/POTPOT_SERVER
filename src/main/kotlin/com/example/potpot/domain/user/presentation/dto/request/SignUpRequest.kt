@@ -22,6 +22,5 @@ data class SignUpRequest(
     val email: String,
 
     @JsonProperty("image_url")
-    @NotNull
-    val imageUrl: String
+    val imageUrl: String? = null
 )

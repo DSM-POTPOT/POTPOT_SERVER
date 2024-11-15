@@ -57,6 +57,9 @@ cloud:
       auto: false
     stack:
       auto: false
+      default:
+        image:
+          address: "s3://potpot/users/다운로드.jpeg"
 
 logging:
   level:

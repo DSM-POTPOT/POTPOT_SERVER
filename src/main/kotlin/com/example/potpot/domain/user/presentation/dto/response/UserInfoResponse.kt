@@ -7,5 +7,5 @@ data class UserInfoResponse(
 
     val email: String,
 
-    val imageUrl: String
+    val imageUrl: String?
 )

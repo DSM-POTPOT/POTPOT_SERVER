@@ -11,34 +11,32 @@ class User(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id", length = 5, nullable = false)
-    val id: Long,
+    val id: Long = 0,
 
     @Column(name = "school_number", length = 5, nullable = false, unique = true)
-    val schoolNumber: String,
+    val schoolNumber: String = "",
 
     @Column(length = 10, nullable = false)
-    var name: String,
+    var name: String = "",
 
     @Column(length = 80, nullable = false)
-    val password: String,
+    val password: String = "",
 
     @Column(length = 55, nullable = false)
-    val email: String,
+    val email: String = "",
 
     @Column(name = "image_url", nullable = false)
-    val imageUrl: String
+    val imageUrl: String? = null
 ) {
 
-    public constructor() : this(0, "", "", "", "", "")
-    constructor(id: Long, schoolNumber: String, name: String, password: String, email: String) : this(
-        id,
+    constructor() : this(
+        0,
         "",
         "",
         "",
         "",
-        ""
+        null
     )
-
     fun updateUserInfo(name: String) {
         this.name = name
     }
