@@ -1,6 +1,5 @@
 package com.example.potpot.domain.user.presentation
 
-import com.example.potpot.domain.auth.presentation.dto.EmailVerifyNumberMatchRequest
 import com.example.potpot.domain.auth.presentation.dto.EmailVerifyNumberRequest
 import com.example.potpot.domain.auth.service.EmailVerifyNumberMatchService
 import com.example.potpot.domain.auth.service.EmailVerifyNumberService
@@ -61,9 +60,9 @@ class UserController(
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/email")
     fun verifyMatch(
-        @RequestBody @Valid
-        request: EmailVerifyNumberMatchRequest
-    ) = emailVerifyNumberMatchService.verifiedCode(request)
+        @RequestParam("email") email: String,
+        @RequestParam("verifyNumber") verifyNumber: String
+    ) = emailVerifyNumberMatchService.verifiedCode(email, verifyNumber)
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/users")

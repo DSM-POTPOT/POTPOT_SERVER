@@ -8,7 +8,7 @@ data class EmailVerifyNumberMatchRequest(
     @NotNull
     val email: String,
 
-    @JsonProperty("verifyNumber")
+    @JsonProperty("email")
     @NotNull
     val verifyNumber: String
 )

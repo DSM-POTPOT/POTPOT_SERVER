@@ -1,6 +1,5 @@
 package com.example.potpot.global.redis
 
-import com.example.potpot.domain.auth.presentation.dto.EmailVerifyNumberMatchRequest
 import org.springframework.data.redis.core.RedisTemplate
 import org.springframework.data.redis.core.ValueOperations
 import org.springframework.stereotype.Component
@@ -22,9 +21,9 @@ class RedisTool(private val redisTemplate: RedisTemplate<String, String>) {
     }
 
     @Transactional(readOnly = true)
-    fun getValues(request: EmailVerifyNumberMatchRequest): String? {
+    fun getValues(email: String, verifyNumber: String): String? {
         val valueOperations = redisTemplate.opsForValue()
-        return valueOperations[request.email]
+        return valueOperations[email]
     }
 
     fun checkExistsValue(value: String): Boolean {
