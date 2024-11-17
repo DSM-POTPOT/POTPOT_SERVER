@@ -1,7 +1,6 @@
 package com.example.potpot.domain.comment.service
 
 import com.example.potpot.domain.comment.facade.CommentFacade
-import com.example.potpot.domain.comment.presentation.dto.request.CommentRequest
 import com.example.potpot.domain.user.exception.UserMismatchException
 import com.example.potpot.domain.user.facade.UserFacade
 import org.springframework.stereotype.Service
@@ -13,12 +12,12 @@ class ModifyCommentService(
     private val commentFacade: CommentFacade
 ) {
     @Transactional
-    fun execute(commentId: Long, request: CommentRequest) {
+    fun execute(commentId: Long, request: String) {
         val user = userFacade.getCurrentUser()
         val comment = commentFacade.getCurrentComment(commentId)
 
         if (!user.equals(comment.user)) throw UserMismatchException
 
-        comment.modifyComment(request.comment)
+        comment.modifyComment(request)
     }
 }

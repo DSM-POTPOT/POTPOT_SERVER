@@ -1,12 +1,10 @@
 package com.example.potpot.domain.comment.presentation
 
-import com.example.potpot.domain.comment.presentation.dto.request.CommentRequest
 import com.example.potpot.domain.comment.service.CreateCommentService
 import com.example.potpot.domain.comment.service.DeleteCommentService
 import com.example.potpot.domain.comment.service.GetFeedDetailsService
 import com.example.potpot.domain.comment.service.ModifyCommentService
 import com.example.potpot.domain.feed.presentation.dto.response.FeedDetailsResponse
-import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
@@ -31,8 +29,8 @@ class CommentController(
     @PostMapping("/{feed-id}")
     fun createComment(
         @PathVariable("feed-id") feedId: Long,
-        @RequestBody @Valid
-        request: CommentRequest
+        @RequestBody
+        request: String
     ) = createCommentService.execute(feedId, request)
 
     @ResponseStatus(HttpStatus.OK)
@@ -45,8 +43,8 @@ class CommentController(
     @PatchMapping("/{comment-id}")
     fun updateComment(
         @PathVariable("comment-id") commentId: Long,
-        @RequestBody @Valid
-        request: CommentRequest
+        @RequestBody
+        request: String
     ) = modifyCommentService.execute(commentId, request)
 
     @ResponseStatus(HttpStatus.OK)
