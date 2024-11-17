@@ -26,7 +26,7 @@ class GetFeedDetailsService(
             commentList = feed.comments.map { comment ->
                 CommentResponse(
                     feedId = comment.id,
-                    userId = comment.user.id,
+                    schoolNumber = comment.user.schoolNumber,
                     comment = comment.comment
                 )
             }
