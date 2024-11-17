@@ -5,5 +5,7 @@ data class CommentResponse(
 
     val schoolNumber: String,
 
+    val name: String,
+
     val comment: String
 )

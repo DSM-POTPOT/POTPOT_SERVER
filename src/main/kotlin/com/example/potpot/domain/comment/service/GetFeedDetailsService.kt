@@ -27,6 +27,7 @@ class GetFeedDetailsService(
                 CommentResponse(
                     feedId = comment.id,
                     schoolNumber = comment.user.schoolNumber,
+                    name = comment.user.name,
                     comment = comment.comment
                 )
             }
