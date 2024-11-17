@@ -20,7 +20,7 @@ class CreateFeedService(
     fun execute(image: MultipartFile?, request: FeedRequest) {
         val user = userFacade.getCurrentUser()
 
-        val image = image?.let { s3Utils.saveFile(it) }
+        val images = image?.let { s3Utils.saveFile(it) }
 
         feedRepository.save(
             Feed(
@@ -28,7 +28,7 @@ class CreateFeedService(
                 content = request.content,
                 date = request.date,
                 category = request.category,
-                image = image,
+                image = images,
                 user = user
             )
         )

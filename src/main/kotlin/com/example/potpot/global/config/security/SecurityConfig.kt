@@ -47,6 +47,7 @@ class SecurityConfig(
                     // feed
                     .requestMatchers(HttpMethod.POST, "/feed").authenticated()
                     .requestMatchers(HttpMethod.DELETE, "/feed").authenticated()
+                    .requestMatchers(HttpMethod.PATCH, "/feed").authenticated()
                     .requestMatchers(HttpMethod.GET, "/feed/query/all").authenticated()
                     .requestMatchers(HttpMethod.GET, "/feed/query/my").authenticated()
                     // comment

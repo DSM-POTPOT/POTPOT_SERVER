@@ -45,7 +45,8 @@ class FeedController(
     fun delete(@RequestParam(name = "id") id: Long) =
         deleteFeedService.execute(id)
 
-    @PatchMapping
+    @ResponseStatus(HttpStatus.OK)
+    @PatchMapping()
     fun update(
         @RequestParam(name = "id")
         id: Long,
