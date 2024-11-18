@@ -18,10 +18,13 @@ class QueryMyApplyService(
 
         return applies.map {
             ApplyResponse(
-                id = it.id,
+                schoolNumber = it.user.schoolNumber,
+                name = it.user.name,
                 feedId = it.feed.id,
+                comment = it.feed.comments,
+                applyId = it.id,
                 isOK = it.isOK
             )
-        }.sortedByDescending { it.id }
+        }.sortedByDescending { it.applyId }
     }
 }

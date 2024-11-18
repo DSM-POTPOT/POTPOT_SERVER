@@ -43,5 +43,5 @@ class ApplyController(
     fun queryMyApply() = queryMyApplyService.execute()
 
     @GetMapping("/query/feed")
-    fun queryByFeed(@RequestParam(name = "feed_id")id: Long) = queryFeedApplyService.execute(id)
+    fun queryByFeed(@RequestParam(name = "feed-id")id: Long) = queryFeedApplyService.execute(id)
 }
