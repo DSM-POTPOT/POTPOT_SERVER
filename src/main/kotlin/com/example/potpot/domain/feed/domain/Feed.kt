@@ -25,10 +25,10 @@ data class Feed(
     val id: Long = 0,
 
     @Column(nullable = false, length = 50)
-    var title: String = "",
+    var title: String,
 
     @Column(nullable = false, length = 500)
-    var content: String = "",
+    var content: String,
 
     @Column(nullable = false)
     var date: LocalDate = LocalDate.now(),
@@ -40,7 +40,7 @@ data class Feed(
     var image: String? = null,
 
     @Column(name = "is_ok", nullable = false)
-    val isOK: Boolean = true,
+    val isOK: Boolean = false,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
