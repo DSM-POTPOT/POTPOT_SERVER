@@ -30,8 +30,8 @@ class CommentController(
     fun createComment(
         @PathVariable("feed-id") feedId: Long,
         @RequestBody
-        request: String
-    ) = createCommentService.execute(feedId, request)
+        comment: String
+    ) = createCommentService.execute(feedId, comment)
 
     @ResponseStatus(HttpStatus.OK)
     @DeleteMapping("/{comment-id}")
@@ -44,8 +44,8 @@ class CommentController(
     fun updateComment(
         @PathVariable("comment-id") commentId: Long,
         @RequestBody
-        request: String
-    ) = modifyCommentService.execute(commentId, request)
+        comment: String
+    ) = modifyCommentService.execute(commentId, comment)
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/{feed-id}")

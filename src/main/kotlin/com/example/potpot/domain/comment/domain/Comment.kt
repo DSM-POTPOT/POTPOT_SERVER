@@ -2,6 +2,7 @@ package com.example.potpot.domain.comment.domain
 
 import com.example.potpot.domain.feed.domain.Feed
 import com.example.potpot.domain.user.domain.User
+import com.fasterxml.jackson.annotation.JsonIgnore
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.FetchType
@@ -22,10 +23,12 @@ data class Comment(
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnore
     val user: User,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "feed_id", nullable = false)
+    @JsonIgnore
     val feed: Feed
 ) {
     constructor() : this(
@@ -35,7 +38,7 @@ data class Comment(
         feed = Feed()
     )
 
-    fun modifyComment(newComment: String): Comment {
-        return this.copy(comment = newComment)
+    fun modifyComment(newComment: String) {
+        this.comment = newComment
     }
 }
