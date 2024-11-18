@@ -26,9 +26,15 @@ class QueryFeedApplyService(
 
         return applies.map {
             QueryByFeedResponse(
-                id = it.id,
-                userName = it.user.name,
-                isOK = it.isOK
+                applyId = it.id,
+                feedId = it.feed.id,
+                title = it.feed.title,
+                content = it.feed.content,
+                date = it.feed.date,
+                category = it.feed.category,
+                image = it.feed.image,
+                is_ok = it.isOK,
+                name = it.user.name
             )
         }
     }

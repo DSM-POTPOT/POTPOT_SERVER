@@ -1,6 +1,7 @@
 package com.example.potpot.domain.apply.presentation
 
 import com.example.potpot.domain.apply.presentation.dto.request.ChangeStatusRequest
+import com.example.potpot.domain.apply.presentation.dto.response.QueryByFeedResponse
 import com.example.potpot.domain.apply.service.ApplyService
 import com.example.potpot.domain.apply.service.ChangeIsOKService
 import com.example.potpot.domain.apply.service.DeleteApplyService
@@ -43,5 +44,5 @@ class ApplyController(
     fun queryMyApply() = queryMyApplyService.execute()
 
     @GetMapping("/query/feed")
-    fun queryByFeed(@RequestParam(name = "feed-id")id: Long) = queryFeedApplyService.execute(id)
+    fun queryByFeed(@RequestParam(name = "feed-id")feedId: Long): List<QueryByFeedResponse> = queryFeedApplyService.execute(feedId)
 }
