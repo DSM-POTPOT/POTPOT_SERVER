@@ -55,6 +55,12 @@ class SecurityConfig(
                     .requestMatchers(HttpMethod.POST, "/comment/{feed-id}").authenticated()
                     .requestMatchers(HttpMethod.DELETE, "/comment/{comment-id}").authenticated()
                     .requestMatchers(HttpMethod.PATCH, "/comment/{comment-id}").authenticated()
+                    // apply
+                    .requestMatchers(HttpMethod.POST, "/apply").authenticated()
+                    .requestMatchers(HttpMethod.DELETE, "/apply").authenticated()
+                    .requestMatchers(HttpMethod.PATCH, "/apply").authenticated()
+                    .requestMatchers(HttpMethod.GET, "/apply/query/my").authenticated()
+                    .requestMatchers(HttpMethod.GET, "/apply/query/feed").authenticated()
             }
         http
             .apply(FilterConfig(objectMapper, tokenProvider))

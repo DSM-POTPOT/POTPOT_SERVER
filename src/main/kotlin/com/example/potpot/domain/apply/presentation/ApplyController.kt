@@ -1,6 +1,5 @@
 package com.example.potpot.domain.apply.presentation
 
-import com.example.potpot.domain.apply.presentation.dto.request.ApplyRequest
 import com.example.potpot.domain.apply.presentation.dto.request.ChangeStatusRequest
 import com.example.potpot.domain.apply.service.ApplyService
 import com.example.potpot.domain.apply.service.ChangeIsOKService
@@ -29,7 +28,7 @@ class ApplyController(
 ) {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    fun create(@RequestBody request: ApplyRequest) = applyService.execute(request)
+    fun create(@RequestParam(name = "feed-id")feedId: Long) = applyService.execute(feedId)
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping
