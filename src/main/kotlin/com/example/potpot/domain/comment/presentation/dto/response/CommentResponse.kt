@@ -7,5 +7,7 @@ data class CommentResponse(
 
     val name: String,
 
+    val commentId: Long,
+
     val comment: String
 )
