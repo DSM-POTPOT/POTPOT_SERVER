@@ -23,7 +23,7 @@ class SecurityConfig(
     @Bean
     fun filterChain(http: HttpSecurity): SecurityFilterChain {
         http
-            .cors().configurationSource { request ->
+            .cors().configurationSource { _ ->
                 CorsConfiguration().apply {
                     addAllowedOrigin("*")
                     addAllowedMethod("*")
